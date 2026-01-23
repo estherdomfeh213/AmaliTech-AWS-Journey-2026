@@ -1,7 +1,9 @@
 # AmaliTech AWS Associate Program - Journey Log
 
 **Learner:** Esther Domfeh
+
 **Cohort:** January - April 2026
+
 **Goal:** AWS Solutions Architect Associate Certification
 
 ## Program Objectives
