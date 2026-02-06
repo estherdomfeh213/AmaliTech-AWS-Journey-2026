@@ -207,7 +207,7 @@ sudo cp wp-config-sample.php wp-config.php
 sudo nano wp-config.php
 ```
 
-**Configuration Added:**t
+**Configuration Added:**
 ```bash
 // Database settings
 define('DB_NAME', 'wordpressdb');
@@ -273,15 +273,15 @@ sudo systemctl is-enabled mariadb  # Should return: enabled
 ```
 
 #### Step 15: WordPress Web Installation
-**Access WordPress:** http://<PUBLIC-IP>/mywordpresswebssite
-**Select Language:** English (United States)
-**Enter Database Information:**
+- **Access WordPress:** http://<PUBLIC-IP>/mywordpresswebssite
+- **Select Language:** English (United States)
+- **Enter Database Information:**
     - Database Name: wordpressdb
     - Username: wpuser
     - Password: SecurePass123!
     - Database Host: localhost
     - Table Prefix: wp_
-**Run Installation**
+- **Run Installation**
 ![WordPress frontend](web-browser/07-wordpress-frontend-1.png)
 
 **Configure Site:**
