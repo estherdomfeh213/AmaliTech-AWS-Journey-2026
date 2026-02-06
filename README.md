@@ -1,7 +1,5 @@
 # AmaliTech AWS Associate Program - Journey Log
 
-**Learner:** Esther Domfeh
-
 **Cohort:** January - April 2026
 
 **Goal:** AWS Solutions Architect Associate Certification
@@ -15,7 +13,7 @@
 ## Project Portfolio
 | Project | Description | AWS Services Used | Status | Link |
 |---------|-------------|-------------------|--------|------|
-| Project 1: | *[Will update]* | | Pending | |
+| Project 1: | AWS WordPress Deployment: EC2 LAMP Stack with phpMyAdmin | Amazon EC2| Done | https://github.com/estherdomfeh213/AmaliTech-AWS-Journey-2026/tree/main/wordpress-aws|
 | Project 2: | *[Will update]* | | Pending | |
 
 ## 📝 Weekly Learning Log
