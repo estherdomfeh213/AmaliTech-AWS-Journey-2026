@@ -177,3 +177,121 @@ SHOW GRANTS FOR 'wpuser'@'localhost';
 -- Output: GRANT ALL PRIVILEGES ON `wordpressdb`.* TO 'wpuser'@'localhost'
 ```
 
+### Phase 6: WordPress Installation
+#### Step 10: Download & Configure WordPress
+
+```bash
+cd /var/www/html
+
+# Download latest WordPress
+sudo wget https://wordpress.org/latest.tar.gz
+
+# Extract WordPress
+sudo tar -xzf latest.tar.gz
+
+# Rename to match lab requirements (NOTE: double "s")
+sudo mv wordpress mywordpresswebssite
+
+# Set permissions
+sudo chown -R apache:apache mywordpresswebssite
+sudo chmod -R 755 mywordpresswebssite
+```
+
+#### Step 11: WordPress Configuration File
+```bash 
+# Copy configuration sample
+cd /var/www/html/mywordpresswebssite
+sudo cp wp-config-sample.php wp-config.php
+
+# Edit configuration
+sudo nano wp-config.php
+```
+
+**Configuration Added:**t
+```bash
+// Database settings
+define('DB_NAME', 'wordpressdb');
+define('DB_USER', 'wpuser');
+define('DB_PASSWORD', 'SecurePass123!');
+define('DB_HOST', 'localhost');
+define('DB_CHARSET', 'utf8mb4');
+define('DB_COLLATE', '');
+
+// Authentication Unique Keys and Salts
+// Generated from: https://api.wordpress.org/secret-key/1.1/salt/
+define('AUTH_KEY',         'put your unique phrase here');
+define('SECURE_AUTH_KEY',  'put your unique phrase here');
+define('LOGGED_IN_KEY',    'put your unique phrase here');
+define('NONCE_KEY',        'put your unique phrase here');
+define('AUTH_SALT',        'put your unique phrase here');
+define('SECURE_AUTH_SALT', 'put your unique phrase here');
+define('LOGGED_IN_SALT',   'put your unique phrase here');
+define('NONCE_SALT',       'put your unique phrase here');
+```
+
+### Phase 7: Apache Configuration
+#### Step 12: Enable Apache Overrides
+
+```bash
+# Edit Apache configuration
+sudo nano /etc/httpd/conf/httpd.conf
+```
+
+```apache
+<Directory "/var/www/html">
+    # Change from:
+    # AllowOverride None
+    # To:
+    AllowOverride All
+    
+    # Ensure these are also set:
+    Require all granted
+    Options Indexes FollowSymLinks
+</Directory>
+```
+
+#### Step 13: Restart & Verify Apache
+```bash
+# Restart Apache to apply changes
+sudo systemctl restart httpd
+
+# Check Apache status
+sudo systemctl status httpd
+# Should show: Active: active (running)
+```
+
+### Phase 8: Final Configuration
+#### Step 14: Enable Services on Boot
+
+```bash
+sudo systemctl enable httpd
+sudo systemctl enable mariadb
+
+# Verify services are enabled
+sudo systemctl is-enabled httpd    # Should return: enabled
+sudo systemctl is-enabled mariadb  # Should return: enabled
+```
+
+#### Step 15: WordPress Web Installation
+**Access WordPress:** http://<PUBLIC-IP>/mywordpresswebssite
+**Select Language:** English (United States)
+**Enter Database Information:**
+    - Database Name: wordpressdb
+    - Username: wpuser
+    - Password: SecurePass123!
+    - Database Host: localhost
+    - Table Prefix: wp_
+**Run Installation**
+![WordPress frontend](web-browser/07-wordpress-frontend-1.png)
+
+**Configure Site:**
+
+Site Title: AWS WordPress Lab
+
+Username: John Doe (Required for lab validation)
+
+Password: [Strong Password]
+
+Email: [Your Email]
+
+Click: Install WordPress
