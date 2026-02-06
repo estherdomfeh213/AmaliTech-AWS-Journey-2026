@@ -16,6 +16,19 @@
 | Project 1: | AWS WordPress Deployment: EC2 LAMP Stack with phpMyAdmin | Amazon EC2| Done | https://github.com/estherdomfeh213/AmaliTech-AWS-Journey-2026/tree/main/wordpress-aws|
 | Project 2: | *[Will update]* | | Pending | |
 
-## 📝 Weekly Learning Log
-- **Week 1:** *[To be filled]*
-- **Week 2:** *[To be filled]*
+## Weekly Learning Log
+- **Week 1:**Compute**
+- **Week 2:** *Compute*
+- **Week 3:**
+- **Week 4:**
+- **Week 5:**
+- **Week 6:**
+- **Week 7:**
+- **Week 8:**
+- **Week 9:**
+- **Week 10:**
+- **Week 11:**
+- **Week 12:**
+- **Week 13:**
+- **Week 14:**
+- **Week 15:**
