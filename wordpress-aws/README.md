@@ -388,13 +388,13 @@ sudo chmod -R 775 /var/www/html/mywordpresswebssite/wp-content/uploads
 
 **📚 References & Resources**
 **Official Documentation**
-[Amazon Linux 2023 User Guide](https://docs.aws.amazon.com/linux/)
-[Apache HTTP Server Documentation
+- [Amazon Linux 2023 User Guide](https://docs.aws.amazon.com/linux/)
+- [Apache HTTP Server Documentation
 ](https://httpd.apache.org/docs/)
-[MariaDB Knowledge Base
+- [MariaDB Knowledge Base
 ](https://mariadb.com/docs)
-[WordPress Installation Guide](https://developer.wordpress.org/advanced-administration/before-install/howto-install/)
-[phpMyAdmin Documentation
+- [WordPress Installation Guide](https://developer.wordpress.org/advanced-administration/before-install/howto-install/)
+- [phpMyAdmin Documentation
 ](https://www.phpmyadmin.net/docs/)
 
 
