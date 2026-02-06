@@ -284,14 +284,121 @@ sudo systemctl is-enabled mariadb  # Should return: enabled
 - **Run Installation**
 ![WordPress frontend](web-browser/07-wordpress-frontend-1.png)
 
-**Configure Site:**
+- **Configure Site:** 
+    - Site Title: AWS WordPress Lab
+    - Username: John Doe (Required for lab validation)
+    - Password: [Strong Password]
+    - Email: [Your Email]
+- **Click:** Install WordPress
+![WordPress Dashboard](web-browser/06-wordpress-dashboard.jpg)
 
-Site Title: AWS WordPress Lab
 
-Username: John Doe (Required for lab validation)
+### Validation & Testing
+#### Service Status Verification
 
-Password: [Strong Password]
+```bash
+# Apache Service
+sudo systemctl is-active httpd      # Expected: active
+sudo systemctl is-enabled httpd     # Expected: enabled
 
-Email: [Your Email]
+# MariaDB Service
+sudo systemctl is-active mariadb    # Expected: active
+sudo systemctl is-enabled mariadb   # Expected: enabled
 
-Click: Install WordPress
+# PHP Version
+php -v | grep PHP                   # Expected: PHP 8.1.27+
+
+# Disk Space
+df -h /var/www                      # Should show available space
+``` 
+
+**⚠️ Troubleshooting & Lessons Learned**
+Common Issues Encountered
+Issue 1: phpMyAdmin "Cannot connect to MySQL server"
+Symptoms: phpMyAdmin shows connection error
+Root Cause: MariaDB socket authentication for root
+Solution:
+
+```bash
+# Create MySQL configuration for phpMyAdmin
+sudo nano /etc/my.cnf.d/phpmyadmin.cnf
+```
+
+Add:
+```bash
+ini
+[client]
+socket=/var/lib/mysql/mysql.sock
+
+[mysql]
+socket=/var/lib/mysql/mysql.sock
+
+[mysqld]
+socket=/var/lib/mysql/mysql.sock
+```
+
+**Issue 2: WordPress "Error establishing database connection"**
+Symptoms: WordPress installation fails
+Root Cause: Incorrect database credentials or permissions
+Solution:
+
+```bash
+# Verify database user has privileges
+sudo mysql -u root -p -e "SHOW GRANTS FOR 'wpuser'@'localhost';"
+
+# Test connection manually
+mysql -u wpuser -p wordpressdb
+```
+
+**Issue 3: Permission Denied for File Uploads**
+Symptoms: WordPress cannot upload media
+Root Cause: Incorrect /wp-content/uploads permissions
+Solution:
+
+```bash
+sudo chown -R apache:apache /var/www/html/mywordpresswebssite/wp-content/uploads
+sudo chmod -R 775 /var/www/html/mywordpresswebssite/wp-content/uploads
+```
+
+**Critical Requirements**
+1. Folder Name: Must be mywordpresswebssite (double "s")
+2. Permissions: Must be 2775 for /var/www
+3. Apache: Must have AllowOverride All
+4. User: WordPress must be installed as "John Doe"
+5. Services: Must be enabled on boot
+
+**Cleanup Procedure**
+**Step 1: Terminate EC2 Instance**
+1. Go to AWS Console → EC2 → Instances
+2. Select WordPress instance
+3. Actions → Instance State → Terminate
+4. Confirm termination
+
+**Step 2: Clean Up Associated Resources**
+1. Elastic IPs: Release if allocated
+2. Security Groups: Delete custom groups created
+3. Key Pairs: Delete or keep for future use
+4. EBS Volumes: Automatically deleted with instance
+
+**Step 3: Cost Verification**
+1. Check AWS Cost Explorer
+2. Verify no running instances
+3. Confirm no unexpected charges
+
+
+**📚 References & Resources**
+**Official Documentation**
+[Amazon Linux 2023 User Guide](https://docs.aws.amazon.com/linux/)
+[Apache HTTP Server Documentation
+](https://httpd.apache.org/docs/)
+[MariaDB Knowledge Base
+](https://mariadb.com/docs)
+[WordPress Installation Guide](https://developer.wordpress.org/advanced-administration/before-install/howto-install/)
+[phpMyAdmin Documentation
+](https://www.phpmyadmin.net/docs/)
+
+
+
+Lab Validation: PASSED
+
+
