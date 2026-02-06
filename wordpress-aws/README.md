@@ -155,3 +155,25 @@ sudo systemctl restart httpd
 ```bash
  http://<PUBLIC-IP>/phpMyAdmin   # The EC2 instance Public IP address
 ``` 
+
+### Phase 5: Database Configuration
+
+#### Step 9: Create WordPress Database 
+
+```sql
+-- Connect to MariaDB
+sudo mysql -u root -p
+
+-- Execute SQL commands
+CREATE DATABASE wordpressdb CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+CREATE USER 'wpuser'@'localhost' IDENTIFIED BY 'SecurePass123!';
+GRANT ALL PRIVILEGES ON wordpressdb.* TO 'wpuser'@'localhost';
+FLUSH PRIVILEGES;
+EXIT;
+```
+**Privilege Verification:**
+```sql
+SHOW GRANTS FOR 'wpuser'@'localhost';
+-- Output: GRANT ALL PRIVILEGES ON `wordpressdb`.* TO 'wpuser'@'localhost'
+```
+
