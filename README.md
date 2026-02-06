@@ -17,8 +17,8 @@
 | Project 2: | *[Will update]* | | Pending | |
 
 ## Weekly Learning Log
-- **Week 1:**Compute**
-- **Week 2:** *Compute*
+- **Week 1:** Compute
+- **Week 2:** Compute
 - **Week 3:**
 - **Week 4:**
 - **Week 5:**
