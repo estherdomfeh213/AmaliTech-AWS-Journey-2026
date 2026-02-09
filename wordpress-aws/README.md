@@ -109,7 +109,7 @@ ls -ld /var/www
 
 ### Phase 4: phpMyAdmin Installation
 
-### Step 7: Manual phpMyAdmin Setup
+#### Step 7: Manual phpMyAdmin Setup
 Note: Amazon Linux 2023 does not provide phpMyAdmin via dnf, so manual install was required:
 
 ```bash
