@@ -67,7 +67,7 @@ sudo systemctl restart httpd
 
 **Verify PHP:** 
 ```bash
-php -v   #PHP 8....
+php -v   #PHP 8.12
 ```
 
 #### Step 5: MariaDB Installation & Security
@@ -313,10 +313,9 @@ df -h /var/www                      # Should show available space
 ``` 
 
 **⚠️ Troubleshooting & Lessons Learned**
-Common Issues Encountered
-Issue 1: phpMyAdmin "Cannot connect to MySQL server"
-Symptoms: phpMyAdmin shows connection error
-Root Cause: MariaDB socket authentication for root
+- phpMyAdmin "Cannot connect to MySQL server"
+    - phpMyAdmin shows connection error
+- Root Cause: MariaDB socket authentication for root
 Solution:
 
 ```bash
@@ -338,8 +337,8 @@ socket=/var/lib/mysql/mysql.sock
 ```
 
 **Issue 2: WordPress "Error establishing database connection"**
-Symptoms: WordPress installation fails
-Root Cause: Incorrect database credentials or permissions
+- WordPress installation fails
+- Root Cause: Incorrect database credentials or permissions
 Solution:
 
 ```bash
@@ -351,8 +350,8 @@ mysql -u wpuser -p wordpressdb
 ```
 
 **Issue 3: Permission Denied for File Uploads**
-Symptoms: WordPress cannot upload media
-Root Cause: Incorrect /wp-content/uploads permissions
+- WordPress cannot upload media
+- Root Cause: Incorrect /wp-content/uploads permissions
 Solution:
 
 ```bash
@@ -398,7 +397,5 @@ sudo chmod -R 775 /var/www/html/mywordpresswebssite/wp-content/uploads
 ](https://www.phpmyadmin.net/docs/)
 
 
-
-Lab Validation: PASSED
 
 
