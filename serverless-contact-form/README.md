@@ -10,9 +10,11 @@ A completely serverless contact form solution built on AWS that automatically sc
 
 ## Project Structure 
 
+```text
 serverless-contact-form/
 ├── index.html              # Frontend contact form
 ├── lambda-function.js      # Backend Lambda code
 ├── README.md              # This documentation
 ├── architecture-diagram.png # System architecture
 └── screenshots/           # Implementation screenshots
+```
