@@ -15,6 +15,7 @@
 |---------|-------------|-------------------|--------|------|
 |Project 1: | AWS WordPress Deployment: EC2 LAMP Stack with phpMyAdmin | Amazon EC2| Done | https://github.com/estherdomfeh213/AmaliTech-AWS-Journey-2026/tree/main/wordpress-aws|
 |Project 2: | Severless Contact Forms with AWS | Amazon SES, Lambda, API Gateway| Pending | https://github.com/estherdomfeh213/AmaliTech-AWS-Journey-2026/tree/main/serverless-contact-form |
+|Project: 3: | | | |
 
 ## Weekly Learning Log
 - **Week 1:** Compute (EC2,ELB, Auto Scaling, ENI, ENA, EFA, Placement Groups) 
