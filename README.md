@@ -1,6 +1,6 @@
 # AmaliTech AWS Associate Program - Journey Log
 
-**Cohort:** January - April 2026
+**Cohort:** January, 2026
 
 **Goal:** AWS Solutions Architect Associate Certification
 
@@ -14,12 +14,12 @@
 | Project | Description | AWS Services Used | Status | Link |
 |---------|-------------|-------------------|--------|------|
 | Project 1: | AWS WordPress Deployment: EC2 LAMP Stack with phpMyAdmin | Amazon EC2| Done | https://github.com/estherdomfeh213/AmaliTech-AWS-Journey-2026/tree/main/wordpress-aws|
-| Project 2: | *[Will update]* | | Pending | |
+| Project 2: | Severless Contact Forms with AWS | Amazon SES, Lambda, API Gateway| Pending | |
 
 ## Weekly Learning Log
-- **Week 1:** Compute
-- **Week 2:** Compute
-- **Week 3:**
+- **Week 1:** Compute (EC2,ELB, Auto Scaling, ENI, ENA, EFA, Placement Groups) 
+- **Week 2:** Compute (Elatic Beanstalk, Lambda, Load Balancers, Outposts...  )
+- **Week 3:** Storage (S3, ACLs & Bucket Policy, S3 Storage Classes, CRR&SRR..) 
 - **Week 4:**
 - **Week 5:**
 - **Week 6:**
