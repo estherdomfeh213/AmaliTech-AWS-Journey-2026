@@ -1,6 +1,6 @@
 # AmaliTech AWS Associate Program - Journey Log
 
-**This repository serves as a documentation of my intensive 15-week AWS SAA-C03 learning and training experience with the AmaliTech AWS External Solutions Architect program.**
+**This repository serves as a documentation of an intensive 15-weeks AWS SAA-C03 learning and training experience with the AmaliTech AWS External Solutions Architect Program.**
 
 **Cohort:** January, 2026
 
@@ -26,8 +26,8 @@
 
 ## Weekly Learning Log
 - **Week 1:** Compute (EC2,ELB, Auto Scaling, ENI, ENA, EFA, Placement Groups) 
-- **Week 2:** Compute (Elatic Beanstalk, Lambda, Load Balancers, Outposts )
-- **Week 3:** Storage (S3, ACLs & Bucket Policy, S3 Storage Classes, CRR&SRR..) 
+- **Week 2:** Compute (Elatic Beanstalk, Lambda, Load Balancers, Outposts)
+- **Week 3:** Storage (S3, ACLs & Bucket Policy, S3 Storage Classes, Cross Regional Replication) 
 - **Week 4:**
 - **Week 5:**
 - **Week 6:**
