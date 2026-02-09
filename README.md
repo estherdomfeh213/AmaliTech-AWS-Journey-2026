@@ -1,8 +1,14 @@
 # AmaliTech AWS Associate Program - Journey Log
+## This repository serves as a documentation of my intensive 15-week AWS SAA-C03 learning and training experience with the AmaliTech AWS External Solutions Architect program.
 
 **Cohort:** January, 2026
 
-**Goal:** AWS Solutions Architect Associate Certification
+**Goals:** 
+- Implementing secure access, infrastructure, and application configurations
+- Building systems that are fault-tolerant, scalable, and high-performing using compute, network, and database services.
+- Selecting appropriate, cost-effective storage, compute, and networking services.
+- Evaluating existing systems to identify improvements.
+- Pass AWS Solutions Architect Associate Certification
 
 ## Program Objectives
 - Master core AWS services and architectural best practices.
