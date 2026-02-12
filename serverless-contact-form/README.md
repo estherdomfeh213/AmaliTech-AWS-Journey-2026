@@ -7,10 +7,8 @@ A serverless contact form built with AWS Lambda, API Gateway, and SES, demonstra
 ![Serverless Contact Form](images/architecture-diagram.png)
 
 ## Architecture Overview
-- API Gateway: Exposes a REST API endpoint for the contact form with CORS enabled for browser access.
-- AWS Lambda: Processes incoming form submissions, validates input, and triggers SES to send emails.
-- Amazon SES: Sends emails without the need for dedicated mail servers.
-- Browser Client: Simple HTML/CSS/JS form that communicates securely with API Gateway.
+This contact form allows users to submit their **name, email, and message**, which is then sent as an email using **AWS SES**. The application is **fully serverless**, meaning no backend servers are required, ensuring **scalability, cost efficiency, and reliability**.
+
 
 ## Project Structure 
 
