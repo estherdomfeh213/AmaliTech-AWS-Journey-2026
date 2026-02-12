@@ -1,8 +1,15 @@
 # AmaliTech AWS Associate Program - Journey Log
 
+**This repository serves as a documentation of an intensive 15-weeks AWS SAA-C03 learning and training experience with the AmaliTech AWS External Solutions Architect Program.**
+
 **Cohort:** January, 2026
 
-**Goal:** AWS Solutions Architect Associate Certification
+**Goals:** 
+- Implementing secure access, infrastructure, and application configurations.
+- Building systems that are fault-tolerant, scalable, and high-performing using compute, network, and database services.
+- Selecting appropriate, cost-effective storage, compute, and networking services.
+- Evaluating existing systems to identify improvements.
+- Pass AWS Solutions Architect Associate Certification.
 
 ## Program Objectives
 - Master core AWS services and architectural best practices.
@@ -13,13 +20,14 @@
 ## Project Portfolio
 | Project | Description | AWS Services Used | Status | Link |
 |---------|-------------|-------------------|--------|------|
-| Project 1: | AWS WordPress Deployment: EC2 LAMP Stack with phpMyAdmin | Amazon EC2| Done | https://github.com/estherdomfeh213/AmaliTech-AWS-Journey-2026/tree/main/wordpress-aws|
-| Project 2: | Severless Contact Forms with AWS | Amazon SES, Lambda, API Gateway| Pending | |
+|Project 1: | AWS WordPress Deployment: EC2 LAMP Stack with phpMyAdmin | Amazon EC2| Done | https://github.com/estherdomfeh213/AmaliTech-AWS-Journey-2026/tree/main/wordpress-aws|
+|Project 2: | Severless Contact Forms with AWS | Amazon SES, Lambda, API Gateway| Pending | https://github.com/estherdomfeh213/AmaliTech-AWS-Journey-2026/tree/main/serverless-contact-form |
+|Project: 3: | | | |
 
 ## Weekly Learning Log
 - **Week 1:** Compute (EC2,ELB, Auto Scaling, ENI, ENA, EFA, Placement Groups) 
-- **Week 2:** Compute (Elatic Beanstalk, Lambda, Load Balancers, Outposts...  )
-- **Week 3:** Storage (S3, ACLs & Bucket Policy, S3 Storage Classes, CRR&SRR..) 
+- **Week 2:** Compute (Elatic Beanstalk, Lambda, Load Balancers, Outposts)
+- **Week 3:** Storage (S3, ACLs & Bucket Policy, S3 Storage Classes, Cross Regional Replication) 
 - **Week 4:**
 - **Week 5:**
 - **Week 6:**
