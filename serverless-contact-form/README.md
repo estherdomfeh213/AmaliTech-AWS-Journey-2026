@@ -1,9 +1,6 @@
 # Serverless Contact Form with AWS 
 
-## Project Overview 
-
-A completely serverless contact form solution built on AWS that automatically scales, costs pennies per month, and requires no server management. This project showcases current cloud architecture with AWS Lambda, API Gateway, and SES (Simple Email Service).
-
+A serverless contact form built with AWS Lambda, API Gateway, and SES, demonstrating a fully cloud-native approach with near-zero operational cost. This project highlights event-driven architecture, serverless best practices, and cost optimization skills.
 
 ## Architecture Diagram 
 
@@ -20,3 +17,4 @@ serverless-contact-form/
 ```
 
 
+## 
