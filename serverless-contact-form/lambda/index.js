@@ -20,9 +20,9 @@ exports.handler = async (event) => {
     const body = event.body ? JSON.parse(event.body) : {};
 
     const params = {
-      Source: "cevenov468@flemist.com", // replace with your verified SES sender
+      Source: "cevenov468@flemist.com", 
       Destination: {
-        ToAddresses: ["slnyrj2syr@wnbaldwy.com"], // replace with your recipient
+        ToAddresses: ["slnyrj2syr@wnbaldwy.com"],
       },
       Message: {
         Subject: { Data: "Contact Form Submission" },
