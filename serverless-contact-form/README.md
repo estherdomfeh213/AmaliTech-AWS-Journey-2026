@@ -80,3 +80,17 @@ serverless-contact-form/
     - Reduced dependency size and improved performance
 - Debugging with CloudWatch
     - Used logs to trace 502 errors back to runtime failures
+
+## Testing & Validation 
+
+
+
+
+
+
+## Key Lessons Learned
+- Serverless reduces operational complexity
+- CORS is a browser security feature, not an AWS bug
+- CloudWatch is essential for production debugging
+- IAM permissions are often the root cause of failures
+- Small architectural decisions (runtime choice) matte
