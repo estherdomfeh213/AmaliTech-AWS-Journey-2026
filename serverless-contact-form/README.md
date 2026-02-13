@@ -25,7 +25,7 @@ A serverless contact form built with AWS Lambda, API Gateway, and SES, demonstra
 
 
 ## Features 
-Fully serverless: No servers to manage  
+- Fully serverless: No servers to manage  
 - Email delivery via AWS SES  
 - CORS enabled for frontend integration  
 - Error handling and status messages in frontend  
@@ -62,7 +62,7 @@ serverless-contact-form/
     ├── cost-analysis.md
     └── lessons-learned.md
 |
-├── Images
+├── images
     └── screenshots/           ← Implementation screenshots
 
 ```
@@ -82,11 +82,16 @@ serverless-contact-form/
     - Used logs to trace 502 errors back to runtime failures
 
 ## Testing & Validation 
+### Email identities verified 
+![Email identities verified-aws console](images/01-email-identities-verified.png)
 
 
+### Browser-based test (frontend validation)
+![browser-based valirdation](images/02-frontend-email-sent-success.jpg)
 
 
-
+### Received email 
+![Received sent email via receiver email identity](images/03-received-email-via-receiver-identity.png)
 
 ## Key Lessons Learned
 - Serverless reduces operational complexity
