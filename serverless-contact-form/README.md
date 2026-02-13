@@ -87,11 +87,14 @@ serverless-contact-form/
 
 
 ### Browser-based test (frontend validation)
-![browser-based valirdation](images/02-frontend-email-sent-success.jpg)
+![browser-based validation](images/02-frontend-email-sent-success.jpg)
 
 
 ### Received email 
 ![Received sent email via receiver email identity](images/03-received-email-via-receiver-identity.png)
+
+### Serverless Contact Form Frontend
+![serverless contact form](images/04-serverless-contact-form-frontend.png)
 
 ## Key Lessons Learned
 - Serverless reduces operational complexity
