@@ -46,7 +46,6 @@ Fully serverless: No servers to manage
 ## Project Structure 
 
 ```text
-
 serverless-contact-form/
 │
 ├── README.md                ← This documentation
@@ -62,10 +61,22 @@ serverless-contact-form/
 └── docs/
     ├── cost-analysis.md
     └── lessons-learned.md
+|
 ├── Images
-    └── screenshots/           ←Implementation screenshots
+    └── screenshots/           ← Implementation screenshots
 
 ```
 
 
-## 
+## Engineering Challenges & Solutions
+- CORS issues with browser-based APIs
+    - Learned how OPTIONS preflight works
+    - Fixed by handling CORS correctly in Lambda + API Gateway
+- Lambda runtime errors (Node.js ES modules vs CommonJS)
+    - Diagnosed "require is not defined"
+    - Chose Node.js 20 for compatibility
+- AWS SDK versioning
+    - Migrated to AWS SDK v3 for SES
+    - Reduced dependency size and improved performance
+- Debugging with CloudWatch
+    - Used logs to trace 502 errors back to runtime failures
