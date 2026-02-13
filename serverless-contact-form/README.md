@@ -46,12 +46,25 @@ Fully serverless: No servers to manage
 ## Project Structure 
 
 ```text
+
 serverless-contact-form/
-├── index.html              # Frontend contact form
-├── lambda-function.js      # Backend Lambda code
-├── README.md              # This documentation
-├── architecture-diagram.png # System architecture
-└── screenshots/           # Implementation screenshots
+│
+├── README.md                ← This documentation
+├── architecture/
+│   └── architecture.png     ← Architecture Diagram
+│
+├── lambda/
+│   └── index.js              ← Lambda function
+│
+├── frontend/
+│   └── contactform.html      ← Frontend
+│
+└── docs/
+    ├── cost-analysis.md
+    └── lessons-learned.md
+├── Images
+    └── screenshots/           ←Implementation screenshots
+
 ```
 
 
