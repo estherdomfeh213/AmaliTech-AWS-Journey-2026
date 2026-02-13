@@ -101,4 +101,4 @@ serverless-contact-form/
 - CORS is a browser security feature, not an AWS bug
 - CloudWatch is essential for production debugging
 - IAM permissions are often the root cause of failures
-- Small architectural decisions (runtime choice) matte
+- Small architectural decisions (runtime choice) matter
