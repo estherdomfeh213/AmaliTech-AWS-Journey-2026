@@ -3,11 +3,14 @@
 A serverless contact form built with AWS Lambda, API Gateway, and SES, demonstrating a fully cloud-native approach with near-zero operational cost. This project highlights event-driven architecture, serverless best practices, and cost optimization skills.
 
 
-## Architecture Diagram 
-![Serverless Contact Form](images/architecture-diagram.png)
+## Architecture & Request Flow
+1. User submits contact form in browser
+2. Browser sends POST request to API Gateway
+3. API Gateway triggers Lambda via proxy integration
+4. Lambda validates input and sends email using SES
+5. SES delivers email to verified recipient
 
-## Architecture Overview
-This contact form allows users to submit their **name, email, and message**, which is then sent as an email using **AWS SES**. The application is **fully serverless**, meaning no backend servers are required, ensuring **scalability, cost efficiency, and reliability**.
+![Serverless Contact Form Architecture](architecture/architecture.png)
 
 
 ## AWS Services Used 
