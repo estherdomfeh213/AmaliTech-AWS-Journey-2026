@@ -130,4 +130,25 @@ sudo systemctl restart httpd
 http://Myapplication-LB-xxxxxxxxxx.elb.us-east-1.amazonaws.com
 ```
 **Initial Result: Page not loading - Connectivity issues detected**
+
 ![Load balancer DNS connectivity issues](screenshoots/08-before-fix.png)
+
+
+
+## Troubleshooting Process
+
+### Step 1: Verify Internet Gateway Attachment
+```bash 
+# Check IGW attachment
+AWS Console → VPC → Internet Gateways
+```
+**MyInternetGateway attached to MyVPC**
+
+
+### Step 2: Check Route Table Associations
+```bash 
+# Verify subnet associations
+AWS Console → VPC → Route Tables → PublicRouteTable
+```
+**Problem Found:**  Subnets not associated with route table
+![subnet not associated with route table](screenshoots/09-subnet-not-ascociated-with-route-table.png)
