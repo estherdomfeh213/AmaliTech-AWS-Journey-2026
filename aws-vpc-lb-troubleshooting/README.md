@@ -215,17 +215,63 @@ systemctl restart httpd
 
 |Test| URL      | Expected Result | Actual Result|
 |---------|-------------|-------------------|--------|
-| Load Balancer| http://Myapplication-LB-xxxx.elb.amazonaws.com|Apache test page |Page loads successfully | 
-|EC2 Direct |http://<EC2-Public-IP> | Apache test page	| Page loads successfully|
+| Load Balancer| http://Myapplication-LB-xxxx.elb.amazonaws.com  |Apache test page |Page loads successfully | 
+|EC2 Direct | http://<EC2-Public-IP> | Apache test page	| Page loads successfully|
 |SSH Access | EC2 Instance Connect| Terminal access|Connected successfully	 |
 |Apache Status |systemctl status httpd |Active (running) | Active (running)|
 
 ### Load Balancer DNS Working:
 
 ```text 
-http://Myapplication-LB-0a4ff4cc035bae63.elb.us-east-1.amazonaws.com
+http://Myapplication-LB-xxxx.elb.amazonaws.com
 ```
 
 **Response:** "Response coming from server"
 
 ![load balancer dns fixed](screenshots/13-dns-after-fix.png)
+
+
+### EC2 Public IP Working:
+```text 
+http://<EC2-Public-IP>
+```
+**Response:** "Response coming from server"
+![EC2 public IP  working](screenshots/14-ec2-public-ip.png)
+
+
+
+##  References & Resources
+- VPC User Guide
+- EC2 Documentation
+- VPC Connectivity Issues
+- Security Groups Guide
+- systemctl Command Guide
+
+##  Project Repository Structure
+
+``text 
+aws-vpc-lb-troubleshooting/
+├── README.md                 # This documentation
+├── architecture/             # Architecture diagrams
+│   └── vpc-lb-architecture.png
+├── scripts/                  # Automation scripts
+│   ├── user-data.sh          # EC2 user data script
+│   └── troubleshooting.sh    # Troubleshooting commands
+├── screenshots/              # Lab screenshots
+│   ├── 01-vpc-creation.png
+│   ├── 02-subnets.png
+│   ├── 03-igw-attachment.png
+│   ├── 04-route-tables.png
+│   ├── 05-ec2-launch.png
+│   ├── 06-load-balancer.png
+│   ├── 07-target-group.png
+│   ├── 08-before-fix.png
+│   ├── 13-after-fix.png
+│   └── 10-validation.png 
+
+└── docs/                     # Additional documentation
+    ├── troubleshooting-guide.md
+    └── best-practices.md
+```
+
+#AWS #VPC #EC2 #LoadBalancer #Networking #Troubleshooting #CloudComputing #DevOps #Infrastructure #Apache #Linux #HighAvailability
