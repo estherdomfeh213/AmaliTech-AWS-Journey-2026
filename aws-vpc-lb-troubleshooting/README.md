@@ -296,5 +296,3 @@ aws-vpc-lb-troubleshooting/
     ├── troubleshooting-guide.md
     └── best-practices.md
 ```
-
-#AWS #VPC #EC2 #LoadBalancer #Networking #Troubleshooting #CloudComputing #DevOps #Infrastructure #Apache #Linux #HighAvailability
