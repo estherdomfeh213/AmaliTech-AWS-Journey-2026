@@ -216,7 +216,9 @@ systemctl restart httpd
 |Test| URL      | Expected Result | Actual Result|
 |---------|-------------|-------------------|--------|
 | Load Balancer| http://Myapplication-LB-xxxx.elb.amazonaws.com  |Apache test page |Page loads successfully | 
-|EC2 Direct | http://<EC2-Public-IP> | Apache test page	| Page loads successfully|
+|EC2 Direct | ```bash 
+http://<EC2-Public-IP> 
+``` | Apache test page	| Page loads successfully|
 |SSH Access | EC2 Instance Connect| Terminal access|Connected successfully	 |
 |Apache Status |systemctl status httpd |Active (running) | Active (running)|
 
@@ -239,6 +241,28 @@ http://<EC2-Public-IP>
 ![EC2 public IP  working](screenshots/14-ec2-public-ip.png)
 
 
+##  Resource Cleanup
+To avoid ongoing charges, terminate all resources:
+```bash 
+# 1. Delete Load Balancer
+AWS Console → EC2 → Load Balancers → Myapplication-LB → Delete
+
+# 2. Delete Target Group
+AWS Console → EC2 → Target Groups → Apache-TG → Delete
+
+# 3. Terminate EC2 Instance
+AWS Console → EC2 → Instances → EC2server → Instance State → Terminate
+
+# 4. Delete Security Group
+AWS Console → EC2 → Security Groups → EC2server-SG → Delete
+
+# 5. Delete VPC components
+AWS Console → VPC → 
+   - Detach and delete Internet Gateway
+   - Delete route tables (if not auto-deleted)
+   - Delete subnets
+   - Delete VPC (MyVPC)
+```
 
 ##  References & Resources
 - VPC User Guide
@@ -247,9 +271,10 @@ http://<EC2-Public-IP>
 - Security Groups Guide
 - systemctl Command Guide
 
+
 ##  Project Repository Structure
 
-``text 
+```text 
 aws-vpc-lb-troubleshooting/
 ├── README.md                 # This documentation
 ├── architecture/             # Architecture diagrams
