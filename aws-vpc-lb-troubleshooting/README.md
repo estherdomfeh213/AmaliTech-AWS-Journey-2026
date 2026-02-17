@@ -131,7 +131,7 @@ http://Myapplication-LB-xxxxxxxxxx.elb.us-east-1.amazonaws.com
 ```
 **Initial Result: Page not loading - Connectivity issues detected**
 
-![Load balancer DNS connectivity issues](screenshoots/08-before-fix.png)
+![Load balancer DNS connectivity issues](screenshots/08-before-fix.png)
 
 
 
@@ -142,7 +142,7 @@ http://Myapplication-LB-xxxxxxxxxx.elb.us-east-1.amazonaws.com
 # Check IGW attachment
 AWS Console → VPC → Internet Gateways
 ```
-**MyInternetGateway attached to MyVPC**
+- **MyInternetGateway attached to MyVPC**
 
 
 ### Step 2: Check Route Table Associations
@@ -150,5 +150,14 @@ AWS Console → VPC → Internet Gateways
 # Verify subnet associations
 AWS Console → VPC → Route Tables → PublicRouteTable
 ```
-**Problem Found:**  Subnets not associated with route table
-![subnet not associated with route table](screenshoots/09-subnet-not-ascociated-with-route-table.png)
+- **Problem Found:**  Subnets not associated with route table
+![subnet not associated with route table](screenshots/09-subnet-not-ascociated-with-route-table.png)
+
+
+**Fix Applied:** 
+- Selected PublicRouteTable
+- Subnet Associations tab → Edit subnet associations
+- Added both MyPublicSubnet1 and MyPublicSubnet2
+- Clicked Save
+
+![subnet associated fix](screenshots/10-subnet-associated-with-route-table.png)
