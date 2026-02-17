@@ -130,4 +130,4 @@ sudo systemctl restart httpd
 http://Myapplication-LB-xxxxxxxxxx.elb.us-east-1.amazonaws.com
 ```
 **Initial Result: Page not loading - Connectivity issues detected**
-![Load balancer DNS connectivity issues](screenshoots/08-before-fix.p)
+![Load balancer DNS connectivity issues](screenshoots/08-before-fix.png)
