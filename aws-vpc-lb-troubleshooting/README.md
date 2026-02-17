@@ -41,3 +41,93 @@ A comprehensive hands-on lab demonstrating network connectivity troubleshooting 
 | Security Group | EC2server-SG | HTTP (80), SSH (22) | Controls traffic to EC2 |
 | Load Balancer | Myapplication-LB | Application Load Balancer |Internet-facing, HTTP:80  |
 | Target Group |Apache-TG  | Targets EC2server |Routes traffic to instance  |
+
+
+## Step-by-Step Implementation
+
+### Task 1-2: VPC Creation
+
+```bash 
+# VPC Configuration:
+VPC Name: MyVPC
+CIDR Block: 10.0.0.0/16
+Tenancy: Default
+Region: us-east-1
+
+```
+
+### Task 3: Subnet Creation
+
+|Subnet| AZ     | CIDR | Purpose|
+|---------|-------------|-------------------|--------|
+| MyPublicSubnet1| us-east-1a|10.0.1.0/24 | Primary instance location|
+|MyPublicSubnet2 |us-east-1b | 10.0.2.0/24|Load balancer high availability| 
+
+### Task 4: Internet Gateway Configuration
+```bash 
+# Create and attach Internet Gateway
+IGW Name: MyInternetGateway
+Attachment: MyVPC
+```
+
+### Task 5: Route Table Setup
+```bash 
+# Create public route table
+Route Table: PublicRouteTable
+VPC: MyVPC
+
+# Add route for internet access
+Destination: 0.0.0.0/0
+Target: MyInternetGateway
+
+# Associate subnets
+Associated Subnets: MyPublicSubnet1, MyPublicSubnet2
+
+```
+
+### Task 6: EC2 Instance Launch
+- Instance Details:
+    - Name: EC2server
+    - AMI: Amazon Linux 2023
+    - Type: t2.micro
+    - VPC: MyVPC
+    - Subnet: MyPublicSubnet1
+    - Auto-assign Public IP: Enable
+    - Security Group: EC2server-SG (HTTP, SSH)
+
+**User Data Script:**
+```bash 
+#!/bin/bash
+sudo dnf update -y
+sudo dnf install -y httpd
+sudo systemctl start httpd
+sudo systemctl enable httpd
+echo "<html><h1>Response coming from server</h1></html>" | sudo tee /var/www/html/index.html
+sudo systemctl restart httpd
+```
+
+### Task 7: Load Balancer Creation
+- Load Balancer Configuration:
+    - Name: Myapplication-LB
+    - Scheme: Internet-facing
+    - IP Address Type: IPv4
+    - VPC: MyVPC
+    - Subnets: MyPublicSubnet1, MyPublicSubnet2
+    - Security Group: EC2server-SG
+    - Listener: HTTP:80
+
+- Target Group Configuration:
+    - Name: Apache-TG
+    - Target Type: Instances
+    - Protocol: HTTP:80
+    - VPC: MyVPC
+    - Registered Targets: EC2server
+
+
+### Task 8: Initial Testing
+```bash 
+# Load Balancer DNS Name
+http://Myapplication-LB-xxxxxxxxxx.elb.us-east-1.amazonaws.com
+```
+**Initial Result: Page not loading - Connectivity issues detected**
+![Load balancer DNS connectivity issues](screenshoots/08-before-fix.p)
