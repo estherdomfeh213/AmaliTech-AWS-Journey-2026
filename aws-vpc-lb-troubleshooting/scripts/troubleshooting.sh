@@ -49,5 +49,19 @@ nslookup amazon.com
 dig google.com
 
 
+# AWS CLI Commands (for reference)
 
+```bash 
+# Describe VPC
+aws ec2 describe-vpcs --filters "Name=tag:Name,Values=MyVPC"
+
+# Describe subnets
+aws ec2 describe-subnets --filters "Name=vpc-id,Values=vpc-xxxxx"
+
+# Describe load balancer
+aws elbv2 describe-load-balancers --names Myapplication-LB
+
+# Check target group health
+aws elbv2 describe-target-health --target-group-arn arn:aws:elasticloadbalancing:...
+```
 
