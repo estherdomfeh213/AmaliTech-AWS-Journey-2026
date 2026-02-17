@@ -23,8 +23,8 @@ A comprehensive hands-on lab demonstrating network connectivity troubleshooting 
 ### Network Configuration 
 
 
-|Components |Name|Configuaration |Purpose |
-|---|---|---|
+|Components| Name       | Configuaration   | Purpose |
+|---------|-------------|-------------------|--------|
 |VPC |MyVPC |10.0.0.0/16 |Isolated network environment |
 |Subnet 1|MyPublicSubnet1 |10.0.1.0/24 (us-east-1a) |Public-facing resources|
 |Subnet 2|MyPublicSubnet2 |10.0.2.0/24 (us-east-1b)  |High availability across AZs|
