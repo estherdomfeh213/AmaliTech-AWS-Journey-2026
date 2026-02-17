@@ -28,7 +28,7 @@
 - **Week 1:** Compute (EC2,ELB, Auto Scaling, ENI, ENA, EFA, Placement Groups) 
 - **Week 2:** Compute (Elatic Beanstalk, Lambda, Load Balancers, Outposts)
 - **Week 3:** Storage (S3, ACLs & Bucket Policy, S3 Storage Classes, Cross Regional Replication) 
-- **Week 4:**
+- **Week 4:** Networking & Content Delivery (VPC, Route Tables, NAT Gateway, VPC Peering & Endpoints, PrivateLink, Transit Gateway)
 - **Week 5:**
 - **Week 6:**
 - **Week 7:**
