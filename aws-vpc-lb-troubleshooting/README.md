@@ -216,9 +216,7 @@ systemctl restart httpd
 |Test| URL      | Expected Result | Actual Result|
 |---------|-------------|-------------------|--------|
 | Load Balancer| http://Myapplication-LB-xxxx.elb.amazonaws.com  |Apache test page |Page loads successfully | 
-|EC2 Direct | ```bash 
-http://<EC2-Public-IP> 
-``` | Apache test page	| Page loads successfully|
+|EC2 Direct | EC2 Public IP address | Apache test page	| Page loads successfully|
 |SSH Access | EC2 Instance Connect| Terminal access|Connected successfully	 |
 |Apache Status |systemctl status httpd |Active (running) | Active (running)|
 
