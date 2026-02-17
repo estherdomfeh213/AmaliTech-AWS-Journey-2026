@@ -161,3 +161,71 @@ AWS Console → VPC → Route Tables → PublicRouteTable
 - Clicked Save
 
 ![subnet associated fix](screenshots/10-subnet-associated-with-route-table.png)
+
+
+### Step 3: Verify Security Group Rules
+```bash 
+# Check inbound rules
+AWS Console → EC2 → Security Groups → EC2server-SG
+```
+- **Problem Found:** HTTP rule missing
+
+**Fix Applied:**
+- Edit inbound rules
+- Add rule: HTTP, Port 80, Source: 0.0.0.0/0
+- Save rules
+
+![fix inbound rule - http](screenshots/11-fix-http-rule.png)
+
+
+### Step 4: Reboot EC2 Instance
+
+```bash 
+# Reboot to apply changes
+AWS Console → EC2 → Instances → EC2server
+Instance State → Reboot
+``` 
+
+![reboot-instance](screenshots/12-reboot-instance.png)
+
+
+## Task 12-13: SSH into EC2 & Reinstall Apache
+
+```bash 
+# Connect via EC2 Instance Connect
+sudo su
+
+# Update system
+yum -y update
+
+# Reinstall Apache
+yum install httpd -y
+systemctl start httpd
+systemctl enable httpd
+systemctl status httpd
+
+# Verify content
+echo "<html><h1>Response coming from server</h1></html>" > /var/www/html/index.html
+systemctl restart httpd
+``` 
+
+## Final Testing Results
+
+### After Troubleshooting:
+
+|Test| URL      | Expected Result | Actual Result|
+|---------|-------------|-------------------|--------|
+| Load Balancer| http://Myapplication-LB-xxxx.elb.amazonaws.com|Apache test page |Page loads successfully | 
+|EC2 Direct |http://<EC2-Public-IP> | Apache test page	| Page loads successfully|
+|SSH Access | EC2 Instance Connect| Terminal access|Connected successfully	 |
+|Apache Status |systemctl status httpd |Active (running) | Active (running)|
+
+### Load Balancer DNS Working:
+
+```text 
+http://Myapplication-LB-0a4ff4cc035bae63.elb.us-east-1.amazonaws.com
+```
+
+**Response:** "Response coming from server"
+
+![load balancer dns fixed](screenshots/13-dns-after-fix.png)
