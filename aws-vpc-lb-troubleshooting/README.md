@@ -290,7 +290,7 @@ aws-vpc-lb-troubleshooting/
 │   ├── 07-target-group.png
 │   ├── 08-before-fix.png
 │   ├── 13-after-fix.png
-│   └── 10-validation.png 
+│   └── 15-validation.png 
 
 └── docs/                     # Additional documentation
     ├── troubleshooting-guide.md
