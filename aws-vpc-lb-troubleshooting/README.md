@@ -23,7 +23,7 @@ A comprehensive hands-on lab demonstrating network connectivity troubleshooting 
 ### Network Configuration 
 
 
-|Components| Name       | Configuaration   | Purpose |
+|Component | Name       | Configuaration   | Purpose |
 |---------|-------------|-------------------|--------|
 |VPC |MyVPC |10.0.0.0/16 |Isolated network environment |
 |Subnet 1|MyPublicSubnet1 |10.0.1.0/24 (us-east-1a) |Public-facing resources|
@@ -31,3 +31,13 @@ A comprehensive hands-on lab demonstrating network connectivity troubleshooting 
 |Internet Gateway|MyInternetGateway|Attached to MyVPC |Internet connectivity|
 |Route Table|PublicRouteTable | 0.0.0.0/0 → IGW |Route internet traffic|
 
+
+
+### Compute & Load Balancing
+
+|Component| Name       | Type/Specs  | Configuration|
+|---------|-------------|-------------------|--------|
+| EC2 Instance | EC2server | t2.micro, Amazon Linux 2023 | Apache web server installed |
+| Security Group | EC2server-SG | HTTP (80), SSH (22) | Controls traffic to EC2 |
+| Load Balancer | Myapplication-LB | Application Load Balancer |Internet-facing, HTTP:80  |
+| Target Group |Apache-TG  | Targets EC2server |Routes traffic to instance  |
