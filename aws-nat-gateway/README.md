@@ -17,3 +17,22 @@ As a Security Engineer at ABC Company, I was tasked with building a secure VPC i
 ##  Solution Architecture
 
 ![Solution architecture diagram](architecture-diagram/architecture.png)
+
+
+## My Step-by-Step Implementation
+
+### Phase 1: Building the Network Foundation
+
+#### Task 1: Create the VPC
+
+```bash 
+# My VPC Configuration:
+VPC Name: MyVPC
+CIDR Block: 10.0.0.0/16
+Tenancy: Default
+Region: us-east-1
+```
+**Why this CIDR?** The 10.0.0.0/16 range gives me 65,536 IP addresses - plenty for current and future needs.
+
+#### Task 2: Create Subnets (Public & Private)
+
