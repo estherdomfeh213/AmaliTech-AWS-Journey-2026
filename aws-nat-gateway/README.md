@@ -119,11 +119,6 @@ Key Pair: Created new key pair for private instance
 ssh -i "MyKey.pem" ec2-user@<Public-EC2-Public-IP>
 
 # Output:
-Last login: Wed Feb 18 10:23:45 2026 from x.x.x.x
-       __|  __|_  )
-       _|  (     /   Amazon Linux 2023 AMI
-      ___|\___|___|
-
 [ec2-user@ip-10-0-0-10 ~]$
 ```
 Successfully connected to public instance
@@ -145,10 +140,6 @@ chmod 400 MyKey.pem
 ssh -i "MyKey.pem" ec2-user@10.0.1.10
 
 # Output:
-Last login: Wed Feb 18 10:25:30 2026 from 10.0.0.10
-       __|  __|_  )
-       _|  (     /   Amazon Linux 2023 AMI
-      ___|\___|___|
 
 [ec2-user@ip-10-0-1-10 ~]$
 ```
@@ -232,16 +223,6 @@ sudo yum -y update
 
 # Output (THIS TIME IT WORKS!):
 Loaded plugins: priorities, update-motd, upgrade-helper
-amzn2-core                                                | 3.6 kB  00:00:00
-amzn2-core/2/x86_64/group_gz                              | 2.5 kB  00:00:00
-amzn2-core/2/x86_64/updateinfo                             | 2.5 kB  00:00:00
-amzn2-core/2/x86_64/primary_db                             |  58 MB  00:00:02
-
-Resolving Dependencies
---> Running transaction check
----> Package amazon-ssm-agent.x86_64 0:3.0.529.0-1.amzn2 will be updated
----> Package amazon-ssm-agent.x86_64 0:3.1.1732.0-1.amzn2 will be an update
-...
 
 Complete!
 ```
