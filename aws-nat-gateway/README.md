@@ -36,3 +36,21 @@ Region: us-east-1
 
 #### Task 2: Create Subnets (Public & Private)
 
+| Subnet | Name | CIDR | AZ | Auto-assign Public IP	 | Purpose
+|---------|-------------|-------------------|--------|------|
+|Public |MyPublicSubnet | 10.0.0.0/24| us-east-1a | Enabled
+| Private | MyPrivateSubnet |10.0.1.0/24 | us-east-1a | Disabled
+
+
+**My Design Decision:** I placed both subnets in the same AZ for simplicity, but in production I'd spread them across AZs for high availability.
+
+
+#### Task 3: Create and Attach Internet Gateway
+
+```bash 
+# Create IGW
+IGW Name: MyIGW
+# Attach to VPC
+Attachment: MyVPC
+```
+**Verification:** Internet Gateway successfully attached to MyVPC
