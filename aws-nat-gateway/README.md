@@ -37,7 +37,7 @@ Region: us-east-1
 #### Task 2: Create Subnets (Public & Private)
 
 | Subnet | Name | CIDR | AZ | Auto-assign Public IP	 | Purpose |
-|---------| ------------|-------------------|--------|------|
+|---------| ------------|-------------------|--------|------|------|
 |Public |MyPublicSubnet | 10.0.0.0/24| us-east-1a | Enabled
 | Private | MyPrivateSubnet |10.0.1.0/24 | us-east-1a | Disabled
 
