@@ -111,7 +111,7 @@ Key Pair: Created new key pair for private instance
 
 ### Phase 3: Initial Testing (Before NAT Gateway)
 
-### Task 7: Test Connectivity - The "Before" State
+#### Task 7: Test Connectivity - The "Before" State
 
 ##### Step 1: SSH into Public EC2 Instance
 ```bash 
