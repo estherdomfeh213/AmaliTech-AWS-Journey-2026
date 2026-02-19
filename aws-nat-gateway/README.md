@@ -251,3 +251,32 @@ curl: (7) Failed to connect to ifconfig.me port 80: Connection timed out
 ```
 **SECURITY VERIFIED!** Private instance still has NO direct internet access - all traffic goes through NAT
 
+
+### Phase 6: Understanding the Traffic Flow
+
+```text
+OUTBOUND TRAFFIC (Private Instance → Internet):
+┌─────────────┐     ┌─────────────┐     ┌─────────────┐     ┌─────────────┐
+│  Private    │────▶│    NAT      │────▶│  Internet   │────▶│  yum repo   │
+│  EC2        │     │  Gateway    │     │  Gateway    │     │  server     │
+│  10.0.1.10  │     │ 10.0.0.50   │     │             │     │             │
+└─────────────┘     └─────────────┘     └─────────────┘     └─────────────┘
+      │                   │                   │                    │
+      │ Private Subnet    │ Public Subnet     │ Internet           │ Response
+      │ Route Table:      │ Route Table:      │                    │
+      │ 0.0.0.0/0 → NAT   │ 0.0.0.0/0 → IGW   │                    │
+      │                   │                   │                    │
+      └───────────────────┴───────────────────┴────────────────────┘
+
+INBOUND TRAFFIC (Internet → Private Instance):
+┌─────────────┐     ┌─────────────┐     ┌─────────────┐
+│  Hacker     │────▶│  Internet   │────▶│    NAT      │
+│  attempts   │     │  Gateway    │     │  Gateway    │
+│  to connect │     │             │     │             │
+└─────────────┘     └─────────────┘     └──────┬──────┘
+                                                │
+                                          DROPPED
+                                      NAT Gateway does NOT
+                                      forward unsolicited
+                                      inbound traffic
+```
