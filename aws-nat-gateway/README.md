@@ -172,6 +172,8 @@ Error: Cannot find a valid baseurl for repo: amzn2-core/0/x86_64
 
 **EXPECTED FAILURE**  Private instance has NO internet access! This is correct behavior.
 
+![Fail Internet Acces](screenshots/07-before-nat-fail.png.png)
+
 
 ### Phase 4: Implementing the Solution - NAT Gateway
 
@@ -238,6 +240,7 @@ Complete!
 ```
 **SUCCESS!** Private instance can install packages from internet repositories!
 
+![Private Internet Access](screenshots/09-after-nat-success.png)
 
 ##### Step 4: Verify Private Instance Still Has No Public IP
 
@@ -274,7 +277,7 @@ INBOUND TRAFFIC (Internet → Private Instance):
 │  attempts   │     │  Gateway    │     │  Gateway    │
 │  to connect │     │             │     │             │
 └─────────────┘     └─────────────┘     └──────┬──────┘
-                                                │
+                                               │
                                           DROPPED
                                       NAT Gateway does NOT
                                       forward unsolicited
@@ -284,7 +287,6 @@ INBOUND TRAFFIC (Internet → Private Instance):
 
 ### Deep Dive: How NAT Gateway Works
 
-#### The Magic of Natwork Address Translation 
 
 ```text
 Private Instance (10.0.1.10) wants to reach yum repo (54.123.45.67):
@@ -338,9 +340,8 @@ Private Instance (10.0.1.10) wants to reach yum repo (54.123.45.67):
 nat-gateway-aws-challenge/
 ├── README.md                    # This documentation
 ├── architecture-diagrams/       # Visual architecture
-│   ├── before-nat.png
-│   ├── after-nat.png
-│   └── traffic-flow.png
+│   ├── architecture-diagram-png
+│   
 ├── scripts/                     # Automation scripts
 │   ├── create-infrastructure.sh
 │   ├── test-connectivity.sh
@@ -365,4 +366,3 @@ nat-gateway-aws-challenge/
     └── best-practices.md
 ```
 
-This documentation represents my problem-solving journey through the NAT Gateway AWS VPC Challenge. Every step, mistake, and success is documented to help others learn from my experience.
