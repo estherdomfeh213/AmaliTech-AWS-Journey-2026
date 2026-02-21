@@ -4,3 +4,16 @@ A comprehensive project demonstrating how to capture, store, and analyze VPC net
 
 
 ![architecture diagram](architecture-diagrams/architecture-diagram.png)
+
+
+## Project Objectives
+
+- Create a custom VPC with public subnet and internet gateway
+- Configure VPC Flow Logs to capture network traffic
+- Set up S3 bucket with proper permissions for log storage
+- Launch EC2 instance and generate web traffic
+- Use AWS Glue to catalog and prepare data for querying
+- Query network traffic data using Amazon Athena
+- Analyze VPC flow logs to gain insights into network patterns
+
+
