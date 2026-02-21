@@ -65,3 +65,17 @@ Block Public Access: UNCHECKED (✓ Acknowledge)
 ```
 
 **Why this matters:** This policy allows the VPC Flow Logs service to write directly to your S3 bucket. Without it, flow logs will fail to deliver.
+
+### Phase 2: Network Infrastructure
+#### Task 3-4: Create VPC and Internet Gateway
+
+```bash 
+# VPC Configuration
+VPC Name: MyVPC
+CIDR: 192.168.0.0/26  # 64 IP addresses (62 usable)
+Tenancy: Default
+
+# Internet Gateway
+IGW Name: MyInternetGateway
+Attachment: MyVPCS
+```
