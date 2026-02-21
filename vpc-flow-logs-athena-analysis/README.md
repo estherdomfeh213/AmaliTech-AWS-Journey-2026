@@ -16,6 +16,13 @@ A comprehensive project demonstrating how to capture, store, and analyze VPC net
 - Query network traffic data using Amazon Athena
 - Analyze VPC flow logs to gain insights into network patterns
 
+##  Infrastructure Components
+### Network Configuration
+### Compute & Storage
+### Analytics Services
+
+
+
 
 ## Step-by-Step Implementation
 
