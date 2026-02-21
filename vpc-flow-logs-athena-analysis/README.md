@@ -79,3 +79,33 @@ Tenancy: Default
 IGW Name: MyInternetGateway
 Attachment: MyVPCS
 ```
+**CIDR Choice:** 192.168.0.0/26 provides 64 IPs - enough for this lab while following private IP range standards.
+
+#### Task 5-7: Create and Configure Public Subnet
+```bash 
+# Public Subnet
+Subnet Name: Public Subnet
+AZ: us-east-1a
+CIDR: 192.168.0.1/27  # 32 IPs (30 usable)
+Auto-assign Public IP: Enabled
+
+# Public Route Table
+Route Table: PublicRouteTable
+VPC: MyVPC
+Routes:
+  - Destination: 0.0.0.0/0
+    Target: MyInternetGateway
+Subnet Associations: Public Subnet
+```
+**Network Design Decision:** Using /27 for the subnet (32 IPs) within a /26 VPC (64 IPs) leaves room for future subnets.
+
+#### Task 8: Create VPC Flow Log
+```bash 
+# Flow Log Configuration
+Name: MyVPCFlowLog
+Filter: All (accepts and rejects)
+Maximum Aggregation Interval: 1 minute
+Destination: Send to Amazon S3 Bucket
+S3 Bucket ARN: arn:aws:s3:::athena-whizlabs
+Log Record Format: AWS default format
+```
