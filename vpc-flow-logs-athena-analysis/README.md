@@ -128,3 +128,25 @@ Network Settings:
     - SSH, Port 22, Source: 0.0.0.0/0
     - HTTP, Port 80, Source: 0.0.0.0/0
 ```
+
+#### Task 10-11: Generate Traffic
+```bash 
+# SSH into instance
+ssh -i "MyEC2FLowLogsKey.pem" ec2-user@<Public-IP>
+
+# Install Apache web server
+sudo su
+dnf -y update
+dnf install -y httpd
+cd /var/www/html
+echo "Response coming from server" > /var/www/html/index.html
+systemctl start httpd
+systemctl enable httpd
+systemctl status httpd
+
+# Verify in browser
+http://<Public-IP>  # Should show "Response coming from server"
+```
+
+**Traffic Generated:**
+
