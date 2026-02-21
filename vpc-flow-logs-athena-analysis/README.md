@@ -246,3 +246,4 @@ Location: (empty for managed)
   }
 ]
 ```
+**Understanding the Schema:**
