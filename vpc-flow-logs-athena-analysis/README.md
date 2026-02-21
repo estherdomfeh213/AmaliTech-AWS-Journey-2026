@@ -175,4 +175,74 @@ s3://athena-whizlabs/
                             └── *.gz files
 ```
 
+### Phase 4: Data Cataloging with AWS Glue
+#### Task 12: Create Glue Database and Table
 
+**Step 1: Create Database**
+```sql 
+-- In AWS Glue Console
+Database Name: whizdb
+Location: (empty for managed)
+```
+
+**Step 2: Create Table with JSON Schema**
+```json 
+[
+  {
+    "Name": "version",
+    "Type": "string"
+  },
+  {
+    "Name": "account_id",
+    "Type": "int"
+  },
+  {
+    "Name": "interface_id",
+    "Type": "string"
+  },
+  {
+    "Name": "srcaddr",
+    "Type": "string"
+  },
+  {
+    "Name": "dstaddr",
+    "Type": "string"
+  },
+  {
+    "Name": "srcport",
+    "Type": "int"
+  },
+  {
+    "Name": "dstport",
+    "Type": "int"
+  },
+  {
+    "Name": "protocol",
+    "Type": "int"
+  },
+  {
+    "Name": "packets",
+    "Type": "int"
+  },
+  {
+    "Name": "bytes",
+    "Type": "int"
+  },
+  {
+    "Name": "start",
+    "Type": "int"
+  },
+  {
+    "Name": "end",
+    "Type": "int"
+  },
+  {
+    "Name": "action",
+    "Type": "string"
+  },
+  {
+    "Name": "log_status",
+    "Type": "string"
+  }
+]
+```
