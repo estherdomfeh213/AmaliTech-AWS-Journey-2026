@@ -149,4 +149,23 @@ http://<Public-IP>  # Should show "Response coming from server"
 ```
 
 **Traffic Generated:**
+- SSH connection (port 22) - your connection
+- HTTP requests (port 80) - browser access
+- DNS queries - for package updates
+- VPC internal traffic
+
+#### Task 11 (continued): Verify Logs in S3
+```bash 
+# After ~5 minutes, check S3 bucket structure:
+s3://athena-whizlabs/
+└── AWSLogs/
+    └── <12-digit-account-id>/
+        └── vpcflowlogs/
+            └── us-east-1/
+                └── 2026/
+                    └── 02/
+                        └── 19/
+                            └── *.gz files
+```
+
 
