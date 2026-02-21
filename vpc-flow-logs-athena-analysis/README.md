@@ -109,3 +109,22 @@ Destination: Send to Amazon S3 Bucket
 S3 Bucket ARN: arn:aws:s3:::athena-whizlabs
 Log Record Format: AWS default format
 ```
+**Why 1-minute interval?** Provides near-real-time visibility while keeping costs reasonable. Default is 10 minutes.
+
+### Phase 3: Compute & Traffic Generation
+#### Task 9: Launch EC2 Instance
+```bash 
+# Instance Configuration
+Name: MyEC2Instance
+AMI: Amazon Linux 2023
+Type: t2.micro
+Key Pair: MyEC2FLowLogsKey (Create new)
+
+Network Settings:
+  VPC: MyVPC
+  Subnet: Public Subnet
+  Auto-assign Public IP: Enable
+  Security Group: FlowLog-SG (new)
+    - SSH, Port 22, Source: 0.0.0.0/0
+    - HTTP, Port 80, Source: 0.0.0.0/0
+```
