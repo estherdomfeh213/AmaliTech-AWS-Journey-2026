@@ -17,3 +17,14 @@ A comprehensive project demonstrating how to capture, store, and analyze VPC net
 - Analyze VPC flow logs to gain insights into network patterns
 
 
+## Step-by-Step Implementation
+
+### Phase 1: Storage Foundation
+
+#### Task 2: Create S3 Bucket with Log Delivery Policy
+```bash 
+# Bucket Configuration:
+Bucket Name: athena-whizlabs
+Region: us-east-1
+Block Public Access: UNCHECKED (✓ Acknowledge)
+```
