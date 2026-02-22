@@ -39,13 +39,12 @@ A comprehensive project demonstrating how to capture, store, and analyze VPC net
 
 ### Analytics Services
 
-|Component |Name |Configuration | Purpose| 
-|-----|----|----|-----|
-|VPC | MyVPC  |192.168.0.0/26  | Isolated network environment |
-|  |  |  |  |
-|  |  |  |  |
-|  |  |  |  |
-|  |  |  |  |
+|Service |Name | Purpose| 
+|-----|----|----|
+| AWS Glue Database |	whizdb  | Metadata catalog |
+| AWS Glue Table |whiztable  |Schema definition for flow logs  |
+| Amazon Athena |Query Editor  |Serverless SQL queries  | 
+| Athena Query Results | s3://athena-whizlabs/AWSlogs/ | Query output storage  |
 
 
 
