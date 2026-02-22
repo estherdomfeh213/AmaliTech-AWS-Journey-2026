@@ -17,6 +17,18 @@ A comprehensive project demonstrating how to capture, store, and analyze VPC net
 - Analyze VPC flow logs to gain insights into network patterns
 
 ##  Infrastructure Components
+|Component |Name |Configuration | Purpose| 
+|-----|----|----|-----|
+|VPC | MyVPC  |192.168.0.0/26  | Isolated network environment |
+|  |  |  |  |
+|  |  |  |  |
+|  |  |  |  |
+|  |  |  |  |
+
+
+
+
+
 ### Network Configuration
 ### Compute & Storage
 ### Analytics Services
