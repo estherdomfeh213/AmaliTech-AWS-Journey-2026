@@ -398,3 +398,54 @@ ORDER BY connection_count DESC;
 
 ### Validation Results
 ![validation checks](screenshots/16-validation.png)
+
+
+## Project Repository Structure
+```text
+vpc-flow-logs-athena-analysis/
+├── README.md                          # This documentation
+├── architecture-diagrams/              # Visual architecture
+│   ├── complete-architecture.png
+│   ├── data-flow.png
+│   └── query-patterns.png
+├── scripts/                            # Automation scripts
+│   ├── setup-environment.sh
+│   ├── generate-traffic.sh
+│   ├── verify-logs.sh
+│   └── cleanup-resources.sh
+├── queries/                            # Athena SQL queries
+│   ├── 01-count-records.sql
+│   ├── 02-top-talkers.sql
+│   ├── 03-rejected-traffic.sql
+│   ├── 04-protocol-distribution.sql
+│   ├── 05-traffic-over-time.sql
+│   └── 06-port-analysis.sql
+├── schema/                             # Glue table schemas
+│   ├── vpc-flow-logs-schema.json
+│   └── partitioned-schema.json
+├── screenshots/                        # Proof of completion
+│   ├── 01-s3-bucket.png
+│   ├── 02-bucket-policy.png
+│   ├── 03-vpc-created.png
+│   ├── 04-igw-attachment.png
+│   ├── 05-subnet.png
+│   ├── 06-route-table.png
+│   ├── 07-flow-log.png
+│   ├── 08-ec2-launch.png
+│   ├── 09-apache-installed.png
+│   ├── 10-s3-logs.png
+│   ├── 11-glue-database.png
+│   ├── 12-glue-table.png
+│   ├── 13-athena-settings.png
+│   ├── 14-query-count.png
+│   └── 15-query-columns.png
+├── sample-data/                        # Sample flow log data
+│   └── sample-flow-log.txt
+└── docs/                               # Additional documentation
+    ├── troubleshooting-guide.md
+    ├── cost-optimization.md
+    ├── security-best-practices.md
+    ├── query-optimization.md
+    └── presentation-slides.pdf
+
+```
