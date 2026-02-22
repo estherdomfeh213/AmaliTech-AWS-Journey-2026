@@ -17,6 +17,21 @@ A comprehensive project demonstrating how to capture, store, and analyze VPC net
 - Analyze VPC flow logs to gain insights into network patterns
 
 ##  Infrastructure Components
+### Network Configuration
+
+|Component |Name |Configuration | Purpose| 
+|-----|----|----|-----|
+|VPC | MyVPC  |192.168.0.0/26  | Isolated network environment |
+| Public Subnet |Public Subnet  |192.168.0.1/27 (us-east-1a)  |Public-facing resources  |
+| Internet Gateway |MyInternetGateway  |Attached to MyVPC  | Internet connectivity |
+| Route Table | PublicRouteTable | 0.0.0.0/0 → IGW | Route internet traffic |
+| VPC Flow Log |MyVPCFlowLog  | 1-min interval, S3 destination | Capture network metadata |
+
+
+
+
+
+### Compute & Storage
 |Component |Name |Configuration | Purpose| 
 |-----|----|----|-----|
 |VPC | MyVPC  |192.168.0.0/26  | Isolated network environment |
@@ -25,14 +40,15 @@ A comprehensive project demonstrating how to capture, store, and analyze VPC net
 |  |  |  |  |
 |  |  |  |  |
 
-
-
-
-
-### Network Configuration
-### Compute & Storage
 ### Analytics Services
 
+|Component |Name |Configuration | Purpose| 
+|-----|----|----|-----|
+|VPC | MyVPC  |192.168.0.0/26  | Isolated network environment |
+|  |  |  |  |
+|  |  |  |  |
+|  |  |  |  |
+|  |  |  |  |
 
 
 
