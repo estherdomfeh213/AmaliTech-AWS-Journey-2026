@@ -271,3 +271,18 @@ Location: (empty for managed)
 ]
 ```
 **Understanding the Schema:**
+|Field |Description |Example |
+|---|---|---|
+|version  | VPC Flow Logs version | 2  | 
+| account_id |AWS account ID  | 123456789012  | 
+| interface_id | ENI ID | eni-123abc  | 
+| srcaddr | Source IP address |192.168.0.10   | 
+|dstaddr  |Destination IP address  |93.184.216.34   | 
+| srcport |Source port  |34567   | 
+| dstport | Destination port | 80  | 
+| packets |Number of packets  | 10  | 
+|bytes  | Number of bytes |  1500 | 
+| start | Start time (Unix seconds) | 1645234567  | 
+|end  |End time (Unix seconds)  | 1645234568  | 
+|action  | ACCEPT or REJECT | ACCEPT  | 
+| log_status |OK, NODATA, SKIPDATA  | OK  | 
