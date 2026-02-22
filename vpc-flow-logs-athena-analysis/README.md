@@ -310,3 +310,69 @@ SELECT COUNT(*) FROM INFORMATION_SCHEMA.COLUMNS
 WHERE TABLE_NAME = 'whiztable';
 
 ```
+
+
+####  Advanced Analysis Queries
+**Top Source IPs by Traffic Volume**
+```sql 
+SELECT srcaddr, SUM(bytes) as total_bytes, COUNT(*) as packet_count
+FROM "whizdb"."whiztable"
+GROUP BY srcaddr
+ORDER BY total_bytes DESC
+LIMIT 10;
+
+```
+
+**Traffic by Protocol**
+```sql
+SELECT 
+  CASE protocol
+    WHEN 6 THEN 'TCP'
+    WHEN 17 THEN 'UDP'
+    WHEN 1 THEN 'ICMP'
+    ELSE 'Other'
+  END as protocol_name,
+  COUNT(*) as connection_count,
+  SUM(bytes) as total_bytes
+FROM "whizdb"."whiztable"
+GROUP BY protocol
+ORDER BY total_bytes DESC;
+```
+
+**Rejected Connection Attempts**
+```sql
+SELECT srcaddr, dstport, COUNT(*) as attempts
+FROM "whizdb"."whiztable"
+WHERE action = 'REJECT'
+GROUP BY srcaddr, dstport
+ORDER BY attempts DESC;
+```
+
+**Traffic Pattern Over Time**
+```sql 
+SELECT 
+  FROM_UNIXTIME(start) as start_time,
+  FROM_UNIXTIME("end") as end_time,
+  interface_id,
+  srcaddr,
+  dstaddr,
+  bytes,
+  action
+FROM "whizdb"."whiztable"
+WHERE action = 'ACCEPT'
+ORDER BY start DESC
+LIMIT 20;
+```
+
+**Top Destination Ports**
+```sql 
+SELECT dstport, COUNT(*) as connection_count
+FROM "whizdb"."whiztable"
+GROUP BY dstport
+ORDER BY connection_count DESC;
+```
+
+**Expected Results:**
+  - Port 22 (SSH) - your management connection
+  - Port 80 (HTTP) - web traffic
+  - Port 443 (HTTPS) - if you visited secure sites
