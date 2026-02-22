@@ -286,3 +286,27 @@ Location: (empty for managed)
 |end  |End time (Unix seconds)  | 1645234568  | 
 |action  | ACCEPT or REJECT | ACCEPT  | 
 | log_status |OK, NODATA, SKIPDATA  | OK  | 
+
+
+### Phase 5: Querying with Amazon Athena
+#### Task 13: Configure Athena Query Settings
+```bash 
+# Query Result Location
+Location: s3://athena-whizlabs/AWSlogs/
+Expected Bucket Owner: <your-account-id>
+```
+
+#### Task 14: Run SQL Queries
+
+**Query 1: Count Total Records**
+```sql
+SELECT COUNT(*) FROM "whizdb"."whiztable";
+```
+![]()
+
+**Query 2: Count Table Columns**
+```sql 
+SELECT COUNT(*) FROM INFORMATION_SCHEMA.COLUMNS 
+WHERE TABLE_NAME = 'whiztable';
+
+```
