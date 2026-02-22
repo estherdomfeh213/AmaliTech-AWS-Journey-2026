@@ -302,7 +302,7 @@ Expected Bucket Owner: <your-account-id>
 ```sql
 SELECT COUNT(*) FROM "whizdb"."whiztable";
 ```
-![]()
+![sql query 1](screenshots/14-query-count.png)
 
 **Query 2: Count Table Columns**
 ```sql 
@@ -310,7 +310,7 @@ SELECT COUNT(*) FROM INFORMATION_SCHEMA.COLUMNS
 WHERE TABLE_NAME = 'whiztable';
 
 ```
-
+![sql query 2](screenshots/15-query-columns.png)
 
 ####  Advanced Analysis Queries
 **Top Source IPs by Traffic Volume**
@@ -395,3 +395,6 @@ ORDER BY connection_count DESC;
 3. DNS Queries: Showed yum repositories being resolved
 4. Accept vs Reject: All legitimate traffic was accepted
 5. Traffic Patterns: Peak during package installation
+
+### Validation Results
+![validation checks](screenshots/16-validation.png)
