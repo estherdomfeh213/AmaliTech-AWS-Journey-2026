@@ -376,3 +376,22 @@ ORDER BY connection_count DESC;
   - Port 22 (SSH) - your management connection
   - Port 80 (HTTP) - web traffic
   - Port 443 (HTTPS) - if you visited secure sites
+
+
+### My Analysis Results
+#### Traffic Generated During Lab
+
+|Traffic Type |Port  |Connections  | Purpose|
+|-----|----|-----|-----|
+|SSH |22  | 12 | My management session|
+| HTTP| 80 |8  |Browser access to test page |
+|DNS | 53 | 25 | yum updates/resolution|
+|HTTPS | 443 | 5 | Package repository access|
+|ICMP |N/A  | 4 | Network diagnostics|
+
+#### Key Insights from Data
+1. SSH Activity: Confirmed my management session duration and IP
+2. Web Traffic: Validated Apache server responded to HTTP requests
+3. DNS Queries: Showed yum repositories being resolved
+4. Accept vs Reject: All legitimate traffic was accepted
+5. Traffic Patterns: Peak during package installation
