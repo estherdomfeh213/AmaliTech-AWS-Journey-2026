@@ -28,17 +28,14 @@ A comprehensive project demonstrating how to capture, store, and analyze VPC net
 | VPC Flow Log |MyVPCFlowLog  | 1-min interval, S3 destination | Capture network metadata |
 
 
-
-
-
 ### Compute & Storage
-|Component |Name |Configuration | Purpose| 
+|Component |Name |Type/Specs | Configuration| 
 |-----|----|----|-----|
-|VPC | MyVPC  |192.168.0.0/26  | Isolated network environment |
-|  |  |  |  |
-|  |  |  |  |
-|  |  |  |  |
-|  |  |  |  |
+|EC2 Instance | MyEC2Instance  |	t2.micro, Amazon Linux 2023  |Apache web server |
+|Security Group  | FlowLog-SG |SSH (22), HTTP (80) from anywhere	  |Traffic control  |
+|S3 Bucket  |athena-whizlabs  |Private with log delivery policy  | 	Flow log storage |
+|Key Pair  |MyEC2FLowLogsKey  |RSA, .pem format  |SSH access  |
+
 
 ### Analytics Services
 
