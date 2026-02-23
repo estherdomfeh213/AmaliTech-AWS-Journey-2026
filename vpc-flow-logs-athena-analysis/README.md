@@ -410,6 +410,19 @@ ORDER BY connection_count DESC;
 4. CloudWatch Alarms - Alert on specific traffic patterns
 5. Automated Crawlers - Schedule Glue crawlers for new data
 
+**Advanced Project Extensions**
+
+```graph TD
+    A[VPC Flow Logs] --> B[S3 Bucket]
+    B --> C[AWS Glue Crawler]
+    C --> D[Athena Queries]
+    D --> E[QuickSight Dashboard]
+    D --> F[Lambda Alerts]
+    F --> G[SNS Notifications]
+    D --> H[Athena ML Integration]
+    H --> I[Anomaly Detection]
+``` 
+
 **Extension Ideas:**
 
 1. Security Analytics: Detect port scans or DDoS patterns
@@ -425,24 +438,9 @@ ORDER BY connection_count DESC;
 vpc-flow-logs-athena-analysis/
 ├── README.md                          # This documentation
 ├── architecture-diagrams/              # Visual architecture
-│   ├── complete-architecture.png
-│   ├── data-flow.png
-│   └── query-patterns.png
-├── scripts/                            # Automation scripts
-│   ├── setup-environment.sh
-│   ├── generate-traffic.sh
-│   ├── verify-logs.sh
-│   └── cleanup-resources.sh
-├── queries/                            # Athena SQL queries
-│   ├── 01-count-records.sql
-│   ├── 02-top-talkers.sql
-│   ├── 03-rejected-traffic.sql
-│   ├── 04-protocol-distribution.sql
-│   ├── 05-traffic-over-time.sql
-│   └── 06-port-analysis.sql
-├── schema/                             # Glue table schemas
-│   ├── vpc-flow-logs-schema.json
-│   └── partitioned-schema.json
+│   ├──architecture.png
+│  
+│   
 ├── screenshots/                        # Proof of completion
 │   ├── 01-s3-bucket.png
 │   ├── 02-bucket-policy.png
@@ -459,14 +457,9 @@ vpc-flow-logs-athena-analysis/
 │   ├── 13-athena-settings.png
 │   ├── 14-query-count.png
 │   └── 15-query-columns.png
-├── sample-data/                        # Sample flow log data
-│   └── sample-flow-log.txt
 └── docs/                               # Additional documentation
     ├── troubleshooting-guide.md
-    ├── cost-optimization.md
-    ├── security-best-practices.md
-    ├── query-optimization.md
-    └── presentation-slides.pdf
+    ├── cost-optimization.md   
 
 ```
 
