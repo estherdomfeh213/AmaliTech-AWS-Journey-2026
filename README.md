@@ -20,12 +20,6 @@
 ## Project Portfolio
 | Project | Description | AWS Services Used | Status | Link |
 |---------|-------------|-------------------|--------|------|
-
-
-
-
-
-
 |6 |** | **|Pending | 
 |5|  **Query VPC Flow Logs Using Amazon Athena**|Amazon EC2, S3,VPC, Amazon Web Services,Amazon Athena | Done | https://github.com/estherdomfeh213/AmaliTech-AWS-Journey-2026/tree/main/vpc-flow-logs-athena-analysis
 |4 |**NAT Gateway - AWS VPC Challenge**  |Amazon EC2,VPC,Amazon Web Services  | Done | https://github.com/estherdomfeh213/AmaliTech-AWS-Journey-2026/tree/main/aws-nat-gateway |
