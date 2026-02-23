@@ -9,3 +9,5 @@
 | Athena|Data scanned: ~10 MB |< $0.01 | 
 | EC2 t2.micro|Hours used |Free tier eligible | 
 |TOTAL | |< $0.03 | 
+
+
