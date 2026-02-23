@@ -1,140 +1,436 @@
-# Network Forensics & Compliance Platform: Solving Unauthorized Access Investigation for an E-Commerce Company
+# Query VPC Flow Logs Using Amazon Athena
 
-## **Executive Summary**
-**The Business Problem:**
-A fast-growing e-commerce company experienced suspicious network activity but had zero visibility into their VPC traffic. The security team couldn't:
-- Identify which IPs were attempting unauthorized access
-- Prove whether data exfiltration occurred during a suspected breach
-- Generate compliance reports for PCI DSS audits
-- Investigate incidents without impacting production performance
+A comprehensive project demonstrating how to capture, store, and analyze VPC network traffic using VPC Flow Logs and Amazon Athena for serverless querying.
 
-Manual investigation took 3-5 days, leaving the business vulnerable. Commercial SIEM solutions quoted $50,000+/year—unaffordable for their startup budget.
-
-**Key Business Outcomes:**
-- **96% faster investigations** — from 3-5 days to 15 minutes
-- **98% cost reduction** — from $2,500/month to $47/month
-- **Zero performance impact** — no agents, no latency
-- **Audit-ready compliance** — automated PCI DSS reports
-- **$147,294 savings over 3 years** vs commercial alternatives
-
-## **Architecture Overview**
-### **High-Level Design**
+## Architecture Diagram 
 ![architecture diagram](architecture-diagrams/architecture-diagram.png)
 
-### **Why This Architecture?**
-| **Business Requirement** | **Technical Decision** | **Why This Choice** |
-|--------------------------|------------------------|---------------------|
-| Capture all network metadata without performance impact | VPC Flow Logs (1-min interval) | Native AWS integration, <1% CPU overhead, no agents needed |
-| Store terabytes of logs cost-effectively | S3 with lifecycle policies | $0.023/GB/month vs $0.25/GB for alternatives |
-| Enable ad-hoc security investigations | Amazon Athena + AWS Glue | Pay-per-query ($5/TB), no servers, scales to petabytes |
-| Maintain security isolation | Separate analysis VPC | Prevents cross-contamination between prod and analysis |
+
+## Project Objectives
+
+- Create a custom VPC with public subnet and internet gateway
+- Configure VPC Flow Logs to capture network traffic
+- Set up S3 bucket with proper permissions for log storage
+- Launch EC2 instance and generate web traffic
+- Use AWS Glue to catalog and prepare data for querying
+- Query network traffic data using Amazon Athena
+- Analyze VPC flow logs to gain insights into network patterns
+
+##  Infrastructure Components
+### Network Configuration
+
+|Component |Name |Configuration | Purpose| 
+|-----|----|----|-----|
+|VPC | MyVPC  |192.168.0.0/26  | Isolated network environment |
+| Public Subnet |Public Subnet  |192.168.0.1/27 (us-east-1a)  |Public-facing resources  |
+| Internet Gateway |MyInternetGateway  |Attached to MyVPC  | Internet connectivity |
+| Route Table | PublicRouteTable | 0.0.0.0/0 → IGW | Route internet traffic |
+| VPC Flow Log |MyVPCFlowLog  | 1-min interval, S3 destination | Capture network metadata |
 
 
-### **Alternatives Considered & Rejected**
-
-| **Alternative** | **Why Rejected** | **Business Impact** |
-|-----------------|------------------|---------------------|
-| **Splunk/Sumo Logic** | $50,000+/year licensing | Would have bankrupted their startup budget |
-| **Self-managed ELK Stack** | 2 full-time engineers to manage | Would have diverted headcount from product development |
-| **CloudWatch Logs Insights** | $0.50/GB ingested + $0.005/GB scanned | 10x higher cost at scale |
-| **Traffic Mirroring** | 5-15% performance hit | Would have impacted customer experience during peak sales |
-
---- 
-## 📊 **Business Value Delivered**
-### **Measurable Outcomes**
-
-| **Metric** | **Before** | **After** | **Improvement** | **Business Impact** |
-|------------|------------|-----------|-----------------|---------------------|
-| Incident investigation time | 3-5 days | 15 minutes | **96% faster** | Reduced breach exposure window |
-| Monthly logging cost | $2,500 (estimated) | $47 | **98% reduction** | $29,436 saved annually |
-| Security visibility | Zero | Complete traffic visibility | **Infinite** | First-time ability to detect threats |
-| Compliance reporting | Manual, 2 weeks | Automated, 1 hour | **93% faster** | Passed PCI audit with no findings |
-| Scalability | Would fail at 100 GB | Petabyte-scale | **10,000x** | No re-architecture needed as they grow |
+### Compute & Storage
+|Component |Name |Type/Specs | Configuration| 
+|-----|----|----|-----|
+|EC2 Instance | MyEC2Instance  |	t2.micro, Amazon Linux 2023  |Apache web server |
+|Security Group  | FlowLog-SG |SSH (22), HTTP (80) from anywhere	  |Traffic control  |
+|S3 Bucket  |athena-whizlabs  |Private with log delivery policy  | 	Flow log storage |
+|Key Pair  |MyEC2FLowLogsKey  |RSA, .pem format  |SSH access  |
 
 
-### **ROI Calculation**
-Total Annual Cost: $564
-Commercial SIEM Alternative: $50,000
-Annual Savings: $49,436
-3-Year Savings: $147,294
-ROI: 8,760%
-Payback Period: < 2 weeks
+### Analytics Services
 
-
-
----
-
-## 🔒 **Security & Compliance Considerations**
-
-### **Security Controls Implemented**
-
-| **Threat/Risk** | **Control Implemented** | **How It Protects the Business** |
-|-----------------|------------------------|----------------------------------|
-| Unauthorized access to logs | IAM least privilege + S3 bucket policies | Only security team can access forensic data |
-| Data leakage during analysis | Separate analysis VPC + no public endpoints | Investigation traffic isolated from production |
-| Tampered logs | S3 Object Lock + versioning | Chain of custody maintained for legal proceedings |
-| Insider threat | CloudTrail + Athena audit queries | All access to logs is logged and queryable |
-
-### **Compliance Mapping**
-- **PCI DSS 10.3.1** - Log all access to network resources
-- **GDPR Article 30** - Maintain records of processing activities
-- **SOC2 CC6** - Logical access controls
-- **ISO 27001 A.12.4** - Logging and monitoring
-
----
-
-## 📈 **Scalability & Future-Proofing**
-
-### **How This Scales With Business Growth**
-
-| **Business Stage** | **Daily Log Volume** | **Query Performance** | **Monthly Cost** | **What Triggers Scaling** |
-|--------------------|---------------------|----------------------|------------------|---------------------------|
-| Current (Startup) | 500 MB | < 2 seconds | $47 | - |
-| Series A (10x growth) | 5 GB | 3-5 seconds | $85 | Add partition projection |
-| Series B (100x) | 50 GB | 5-10 seconds | $450 | Convert to Parquet format |
-| Enterprise (1000x) | 500 GB | 15-20 seconds | $4,200 | Add Glue workgroups + concurrency scaling |
-
-### **Future Enhancements Planned**
-- **Automated anomaly detection** — Lambda + Athena ML to identify attack patterns in real-time (Q2 2026)
-- **Slack integration** — Security team notified immediately of suspicious patterns (Q3 2026)
-- **Compliance dashboard** — QuickSight visualization for auditors (Q4 2026)
-
----
-
-## 🔄 **Operational Excellence**
-
-### **Monitoring & Alerting**
-
-| **What We Monitor** | **Why It Matters** | **Alert When** | **Response Action** |
-|---------------------|-------------------|----------------|---------------------|
-| Flow log delivery failures | Missing logs = blind spot | > 0 for 5 minutes | SNS to security team + auto-remediation Lambda |
-| REJECT connection spike | Possible attack in progress | > 100% increase | PagerDuty incident + automated IP blocking |
-| Unusual data transfer | Possible data exfiltration | > 100 MB to new destination | Security review + forensic investigation |
-| Athena query cost | Budget control | > 10 TB scanned/day | Optimize queries + notify lead engineer |
-
-### **Disaster Recovery**
-- **RTO:** 1 hour
-- **RPO:** 5 minutes
-- **Backup Strategy:** Cross-region replication of S3 logs to us-west-2
-- **Recovery Procedure:** Switch Athena queries to use replica bucket
-
----
-
-## 💰 **Total Cost of Ownership**
-
-| **Component** | **Monthly Cost** | **Annual Cost** | **Notes** |
-|--------------|------------------|-----------------|-----------|
-| VPC Flow Logs | $0 | $0 | First 10 GB free |
-| S3 Storage (500 GB) | $11.50 | $138 | $0.023/GB, lifecycle to Glacier after 90 days |
-| S3 PUT/GET requests | $0.50 | $6 | Minimal |
-| Athena queries (10 TB scanned) | $35 | $420 | $5/TB, optimized with partitioning |
-| AWS Glue | $0 | $0 | First million objects free |
-| **TOTAL** | **$47** | **$564** | |
-
-### **Cost Comparison vs Alternatives**
+|Service |Name | Purpose| 
+|-----|----|----|
+| AWS Glue Database |	whizdb  | Metadata catalog |
+| AWS Glue Table |whiztable  |Schema definition for flow logs  |
+| Amazon Athena |Query Editor  |Serverless SQL queries  | 
+| Athena Query Results | s3://athena-whizlabs/AWSlogs/ | Query output storage  |
 
 
 
+## Step-by-Step Implementation
+
+### Phase 1: Storage Foundation
+
+#### Task 2: Create S3 Bucket with Log Delivery Policy
+```bash 
+# Bucket Configuration:
+Bucket Name: athena-whizlabs
+Region: us-east-1
+Block Public Access: UNCHECKED (✓ Acknowledge)
+```
+
+**Apply Bucket Policy**
+```json 
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Sid": "AWSLogDeliveryWrite",
+      "Effect": "Allow",
+      "Principal": {
+        "Service": "delivery.logs.amazonaws.com"
+      },
+      "Action": "s3:PutObject",
+      "Resource": "arn:aws:s3:::athena-whizlabs/AWSLogs/*",
+      "Condition": {
+        "StringEquals": {
+          "s3:x-amz-acl": "bucket-owner-full-control"
+        }
+      }
+    },
+    {
+      "Sid": "AWSLogDeliveryCheck",
+      "Effect": "Allow",
+      "Principal": {
+        "Service": "delivery.logs.amazonaws.com"
+      },
+      "Action": [
+        "s3:GetBucketAcl",
+        "s3:ListBucket"
+      ],
+      "Resource": "arn:aws:s3:::athena-whizlabs"
+    }
+  ]
+}
+```
+
+**Why this matters:** This policy allows the VPC Flow Logs service to write directly to your S3 bucket. Without it, flow logs will fail to deliver.
+
+### Phase 2: Network Infrastructure
+#### Task 3-4: Create VPC and Internet Gateway
+
+```bash 
+# VPC Configuration
+VPC Name: MyVPC
+CIDR: 192.168.0.0/26  # 64 IP addresses (62 usable)
+Tenancy: Default
+
+# Internet Gateway
+IGW Name: MyInternetGateway
+Attachment: MyVPCS
+```
+**CIDR Choice:** 192.168.0.0/26 provides 64 IPs - enough for this lab while following private IP range standards.
+
+#### Task 5-7: Create and Configure Public Subnet
+```bash 
+# Public Subnet
+Subnet Name: Public Subnet
+AZ: us-east-1a
+CIDR: 192.168.0.1/27  # 32 IPs (30 usable)
+Auto-assign Public IP: Enabled
+
+# Public Route Table
+Route Table: PublicRouteTable
+VPC: MyVPC
+Routes:
+  - Destination: 0.0.0.0/0
+    Target: MyInternetGateway
+Subnet Associations: Public Subnet
+```
+**Network Design Decision:** Using /27 for the subnet (32 IPs) within a /26 VPC (64 IPs) leaves room for future subnets.
+
+#### Task 8: Create VPC Flow Log
+```bash 
+# Flow Log Configuration
+Name: MyVPCFlowLog
+Filter: All (accepts and rejects)
+Maximum Aggregation Interval: 1 minute
+Destination: Send to Amazon S3 Bucket
+S3 Bucket ARN: arn:aws:s3:::athena-whizlabs
+Log Record Format: AWS default format
+```
+**Why 1-minute interval?** Provides near-real-time visibility while keeping costs reasonable. Default is 10 minutes.
+
+### Phase 3: Compute & Traffic Generation
+#### Task 9: Launch EC2 Instance
+```bash 
+# Instance Configuration
+Name: MyEC2Instance
+AMI: Amazon Linux 2023
+Type: t2.micro
+Key Pair: MyEC2FLowLogsKey (Create new)
+
+Network Settings:
+  VPC: MyVPC
+  Subnet: Public Subnet
+  Auto-assign Public IP: Enable
+  Security Group: FlowLog-SG (new)
+    - SSH, Port 22, Source: 0.0.0.0/0
+    - HTTP, Port 80, Source: 0.0.0.0/0
+```
+
+#### Task 10-11: Generate Traffic
+```bash 
+# SSH into instance
+ssh -i "MyEC2FLowLogsKey.pem" ec2-user@<Public-IP>
+
+# Install Apache web server
+sudo su
+dnf -y update
+dnf install -y httpd
+cd /var/www/html
+echo "Response coming from server" > /var/www/html/index.html
+systemctl start httpd
+systemctl enable httpd
+systemctl status httpd
+
+# Verify in browser
+http://<Public-IP>  # Should show "Response coming from server"
+```
+
+**Traffic Generated:**
+- SSH connection (port 22) - your connection
+- HTTP requests (port 80) - browser access
+- DNS queries - for package updates
+- VPC internal traffic
+
+#### Task 11 (continued): Verify Logs in S3
+```bash 
+# After ~5 minutes, check S3 bucket structure:
+s3://athena-whizlabs/
+└── AWSLogs/
+    └── <12-digit-account-id>/
+        └── vpcflowlogs/
+            └── us-east-1/
+                └── 2026/
+                    └── 02/
+                        └── 19/
+                            └── *.gz files
+```
+
+### Phase 4: Data Cataloging with AWS Glue
+#### Task 12: Create Glue Database and Table
+
+**Step 1: Create Database**
+```sql 
+-- In AWS Glue Console
+Database Name: whizdb
+Location: (empty for managed)
+```
+
+**Step 2: Create Table with JSON Schema**
+```json 
+[
+  {
+    "Name": "version",
+    "Type": "string"
+  },
+  {
+    "Name": "account_id",
+    "Type": "int"
+  },
+  {
+    "Name": "interface_id",
+    "Type": "string"
+  },
+  {
+    "Name": "srcaddr",
+    "Type": "string"
+  },
+  {
+    "Name": "dstaddr",
+    "Type": "string"
+  },
+  {
+    "Name": "srcport",
+    "Type": "int"
+  },
+  {
+    "Name": "dstport",
+    "Type": "int"
+  },
+  {
+    "Name": "protocol",
+    "Type": "int"
+  },
+  {
+    "Name": "packets",
+    "Type": "int"
+  },
+  {
+    "Name": "bytes",
+    "Type": "int"
+  },
+  {
+    "Name": "start",
+    "Type": "int"
+  },
+  {
+    "Name": "end",
+    "Type": "int"
+  },
+  {
+    "Name": "action",
+    "Type": "string"
+  },
+  {
+    "Name": "log_status",
+    "Type": "string"
+  }
+]
+```
+**Understanding the Schema:**
+|Field |Description |Example |
+|---|---|---|
+|version  | VPC Flow Logs version | 2  | 
+| account_id |AWS account ID  | 123456789012  | 
+| interface_id | ENI ID | eni-123abc  | 
+| srcaddr | Source IP address |192.168.0.10   | 
+|dstaddr  |Destination IP address  |93.184.216.34   | 
+| srcport |Source port  |34567   | 
+| dstport | Destination port | 80  | 
+| packets |Number of packets  | 10  | 
+|bytes  | Number of bytes |  1500 | 
+| start | Start time (Unix seconds) | 1645234567  | 
+|end  |End time (Unix seconds)  | 1645234568  | 
+|action  | ACCEPT or REJECT | ACCEPT  | 
+| log_status |OK, NODATA, SKIPDATA  | OK  | 
+
+
+### Phase 5: Querying with Amazon Athena
+#### Task 13: Configure Athena Query Settings
+```bash 
+# Query Result Location
+Location: s3://athena-whizlabs/AWSlogs/
+Expected Bucket Owner: <your-account-id>
+```
+
+#### Task 14: Run SQL Queries
+
+**Query 1: Count Total Records**
+```sql
+SELECT COUNT(*) FROM "whizdb"."whiztable";
+```
+![sql query 1](screenshots/14-query-count.png)
+
+**Query 2: Count Table Columns**
+```sql 
+SELECT COUNT(*) FROM INFORMATION_SCHEMA.COLUMNS 
+WHERE TABLE_NAME = 'whiztable';
+
+```
+![sql query 2](screenshots/15-query-columns.png)
+
+####  Advanced Analysis Queries
+**Top Source IPs by Traffic Volume**
+```sql 
+SELECT srcaddr, SUM(bytes) as total_bytes, COUNT(*) as packet_count
+FROM "whizdb"."whiztable"
+GROUP BY srcaddr
+ORDER BY total_bytes DESC
+LIMIT 10;
+
+```
+
+**Traffic by Protocol**
+```sql
+SELECT 
+  CASE protocol
+    WHEN 6 THEN 'TCP'
+    WHEN 17 THEN 'UDP'
+    WHEN 1 THEN 'ICMP'
+    ELSE 'Other'
+  END as protocol_name,
+  COUNT(*) as connection_count,
+  SUM(bytes) as total_bytes
+FROM "whizdb"."whiztable"
+GROUP BY protocol
+ORDER BY total_bytes DESC;
+```
+
+**Rejected Connection Attempts**
+```sql
+SELECT srcaddr, dstport, COUNT(*) as attempts
+FROM "whizdb"."whiztable"
+WHERE action = 'REJECT'
+GROUP BY srcaddr, dstport
+ORDER BY attempts DESC;
+```
+
+**Traffic Pattern Over Time**
+```sql 
+SELECT 
+  FROM_UNIXTIME(start) as start_time,
+  FROM_UNIXTIME("end") as end_time,
+  interface_id,
+  srcaddr,
+  dstaddr,
+  bytes,
+  action
+FROM "whizdb"."whiztable"
+WHERE action = 'ACCEPT'
+ORDER BY start DESC
+LIMIT 20;
+```
+
+**Top Destination Ports**
+```sql 
+SELECT dstport, COUNT(*) as connection_count
+FROM "whizdb"."whiztable"
+GROUP BY dstport
+ORDER BY connection_count DESC;
+```
+
+**Expected Results:**
+  - Port 22 (SSH) - your management connection
+  - Port 80 (HTTP) - web traffic
+  - Port 443 (HTTPS) - if you visited secure sites
+
+
+### My Analysis Results
+#### Traffic Generated During Lab
+
+|Traffic Type |Port  |Connections  | Purpose|
+|-----|----|-----|-----|
+|SSH |22  | 12 | My management session|
+| HTTP| 80 |8  |Browser access to test page |
+|DNS | 53 | 25 | yum updates/resolution|
+|HTTPS | 443 | 5 | Package repository access|
+|ICMP |N/A  | 4 | Network diagnostics|
+
+#### Key Insights from Data
+1. SSH Activity: Confirmed my management session duration and IP
+2. Web Traffic: Validated Apache server responded to HTTP requests
+3. DNS Queries: Showed yum repositories being resolved
+4. Accept vs Reject: All legitimate traffic was accepted
+5. Traffic Patterns: Peak during package installation
+
+### Validation Results
+![validation checks](screenshots/16-validation.png)
+
+
+### 🔄 Enhancements & Next Steps
+
+**Immediate Improvements** 
+
+1. Partition Projection - Configure Athena partition projection for better performance
+2. Compressed Formats - Convert logs to Parquet/ORC for cost savings
+3. QuickSight Dashboard - Visualize traffic patterns
+4. CloudWatch Alarms - Alert on specific traffic patterns
+5. Automated Crawlers - Schedule Glue crawlers for new data
+
+**Advanced Project Extensions**
+
+```
+graph TD
+    A[VPC Flow Logs] --> B[S3 Bucket]
+    B --> C[AWS Glue Crawler]
+    C --> D[Athena Queries]
+    D --> E[QuickSight Dashboard]
+    D --> F[Lambda Alerts]
+    F --> G[SNS Notifications]
+    D --> H[Athena ML Integration]
+    H --> I[Anomaly Detection]
+``` 
+
+**Extension Ideas:**
+
+1. Security Analytics: Detect port scans or DDoS patterns
+2. Cost Optimization: Identify unused resources from traffic patterns
+3. Compliance Reporting: Generate network access reports
+4. Real-time Alerts: Lambda + Athena for immediate notification
+5. Machine Learning: Use Athena ML to detect anomalies
 
 
 
