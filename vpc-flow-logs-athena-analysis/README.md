@@ -405,25 +405,17 @@ ORDER BY connection_count DESC;
 **Immediate Improvements** 
 
 1. Partition Projection - Configure Athena partition projection for better performance
-
 2. Compressed Formats - Convert logs to Parquet/ORC for cost savings
-
 3. QuickSight Dashboard - Visualize traffic patterns
-
 4. CloudWatch Alarms - Alert on specific traffic patterns
-
 5. Automated Crawlers - Schedule Glue crawlers for new data
 
 **Extension Ideas:**
 
 1. Security Analytics: Detect port scans or DDoS patterns
-
 2. Cost Optimization: Identify unused resources from traffic patterns
-
 3. Compliance Reporting: Generate network access reports
-
 4. Real-time Alerts: Lambda + Athena for immediate notification
-
 5. Machine Learning: Use Athena ML to detect anomalies
 
 
