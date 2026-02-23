@@ -33,7 +33,7 @@
 - **Week 2:** Compute (Elatic Beanstalk,Lambda,Load Balancers, Outposts)
 - **Week 3:** Storage (S3,ACLs & Bucket Policy,S3 Storage Classes,Cross Regional Replication) 
 - **Week 4:** Networking & Content Delivery (VPC,Route Tables,NAT Gateway,VPC Peering & Endpoints,PrivateLink,Transit Gateway)
-- **Week 5:** 
+- **Week 5:** Networking & Content Delivery (VPN,Direct Connect, API Gateway,CloudFront, S3 Presigned URL,Route 53, Global Acelerator)
 - **Week 6:**
 - **Week 7:**
 - **Week 8:**
