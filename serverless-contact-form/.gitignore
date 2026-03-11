@@ -1,0 +1,16 @@
+1. What problem does this solve?
+Many contact forms rely on servers, databases, and complex backend infrastructure. This project demonstrates how to build a secure, scalable contact form using a fully serverless architecture on AWS.
+
+2. What architecture did you choose — and why?
+
+You already have this:
+
+Serverless (Lambda + API Gateway + SES)
+
+Event-driven
+
+No servers to manage
+
+Cost-efficient
+
+Explicitly state why you didn’t use EC2.
