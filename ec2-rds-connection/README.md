@@ -1,4 +1,4 @@
-# Connecting an EC2 Instance to an RDS MySQL Database Automatically (AWS Cloud Challenge)
+# Connecting an EC2 Instance to an RDS MySQL Database Automatically
 
 ## Project Overview
 
@@ -10,8 +10,8 @@ The infrastructure uses the AWS Free Tier where possible and follows standard cl
 
 Services used in this project include:
 
-- :contentReference[oaicite:0]{index=0}
-- :contentReference[oaicite:1]{index=1}
+- Amazon EC2
+- Amazon RDS
 
 ---
 
