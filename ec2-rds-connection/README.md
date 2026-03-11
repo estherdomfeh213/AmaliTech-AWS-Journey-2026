@@ -169,3 +169,30 @@ For production environments, additional best practices should include:
 - VPC-based isolation
 - IAM database authentication
 - Secrets Manager for credential storage
+
+
+## Project Structure
+
+ec2-rds-connection/
+│
+├── README.md
+│
+├── architecture/
+│   └── architecture-diagram.png
+│
+├── docs/
+│   ├── architecture-explanation.md
+│   ├── deployment-steps.md
+│   └── cost-analysis.md
+│
+├── scripts/
+│   └── database-setup.sql
+│
+├── screenshots/
+│   ├── ec2-instance-running.png
+│   ├── rds-instance-available.png
+│   ├── rds-endpoint.png
+│   └── mysql-connection-success.png
+│
+└── cleanup/
+    └── resource-deletion-guide.md
