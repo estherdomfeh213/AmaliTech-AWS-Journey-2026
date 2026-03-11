@@ -173,7 +173,8 @@ For production environments, additional best practices should include:
 
 ## Project Structure
 
-ec2-rds-connection/
+```text
+ec2-rds-connection-project/
 │
 ├── README.md
 │
@@ -196,3 +197,4 @@ ec2-rds-connection/
 │
 └── cleanup/
     └── resource-deletion-guide.md
+```
