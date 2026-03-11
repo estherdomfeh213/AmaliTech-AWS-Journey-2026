@@ -182,8 +182,6 @@ ec2-rds-connection-project/
 │   └── architecture-diagram.png
 │
 ├── docs/
-│   ├── architecture-explanation.md
-│   ├── deployment-steps.md
 │   └── cost-analysis.md
 │
 ├── scripts/
