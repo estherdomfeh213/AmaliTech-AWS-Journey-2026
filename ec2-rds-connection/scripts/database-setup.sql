@@ -27,5 +27,3 @@ INSERT INTO subjects(subject_name, teacher) VALUES ('Arts', 'Suzan Carpenter');
 
 select * from subjects;
 
-
-exit 
