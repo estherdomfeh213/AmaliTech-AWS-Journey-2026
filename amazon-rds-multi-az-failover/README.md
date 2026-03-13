@@ -185,5 +185,35 @@ SELECT * FROM students;
 3. Old primary reboots and becomes new replica
 4. Process typically completes in 30-60 seconds
 
+### Phase 8: Post-Failover Validation
+**Connect to New Writer:**
+```bash 
+mysql -h myauroracluster.cluster-xxxxx.us-east-1.rds.amazonaws.com -u WhizlabsAdmin -p
+```
+
+**Verify Data Durability:**
+```sql
+SHOW DATABASES;
+USE auroro_db;
+SELECT * FROM students;  -- All 4 records should be present
+
+-- Test write capability
+INSERT INTO students(subject_name, teacher) VALUES ('History', 'Robert Johnson');
+SELECT * FROM students WHERE teacher = 'Robert Johnson';
+```
+
+
+### Phase 9: Clean Up Resources
+
+**Terminate EC2:**
+- EC2 Console → Instances → Select MyRdsEc2server → Instance State → Terminate
+
+**Delete RDS Cluster (Reader FIRST, then Writer):**
+- RDS → Databases → Select reader → Actions → Delete
+    - Uncheck "Create final snapshot"
+    - Type "delete me"
+
+- Repeat for writer instance
+
 
 
