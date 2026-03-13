@@ -217,9 +217,8 @@ SELECT * FROM students WHERE teacher = 'Robert Johnson';
 
 
 ### 🔄 Comparison: Aurora Multi-AZ vs Alternatives
-| Feature | Aurora Multi-AZ | Standard RDS Multi-AZ| Self-Managed| 
+| Feature | Aurora Multi-AZ | Standard RDS Multi-AZ| Self-Managed | 
 |------|----------|------|--------|---------|
-
 | Failover Time | 30-60 seconds| 1-2 minutes  | Minutes to hours |
 |Data Loss Risk  |None | None | Varies  
 | Read Scaling |   Yes    | No  | Manual setup
