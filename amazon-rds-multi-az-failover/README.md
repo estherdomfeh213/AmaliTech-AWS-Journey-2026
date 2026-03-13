@@ -83,7 +83,7 @@ sudo dnf install mysql -y
 | Type | Protocol | Port | Source | Purpose |
 |------|----------|------|--------|---------|
 | MySQL/Aurora | TCP | 3306 | 0.0.0.0/0 | Initial wide open (will restrict later)
-|
+
 
 
 ### Phase 3: Amazon Aurora Cluster Deployment
@@ -109,4 +109,15 @@ Additional Configuration:
   Initial Database Name: whizlabsrds
   Encryption: Disabled (Lab - enable in production)
 ```
+**Deployment Timeline:** 10-15 minutes
+
+
+### Phase 4: Post-Deployment Verification
+**Capture Endpoints:**
+```bash 
+WRITER_ENDPOINT="myauroracluster.cluster-xxxxx.us-east-1.rds.amazonaws.com"
+READER_ENDPOINT="myauroracluster.cluster-ro-xxxxx.us-east-1.rds.amazonaws.com"
+```
+
+
 
