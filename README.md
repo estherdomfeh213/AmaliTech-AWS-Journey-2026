@@ -20,6 +20,7 @@
 ## Project Portfolio
 | Project | Description | AWS Services Used | Status | Link |
 |---------|-------------|-------------------|--------|------|
+| 7 | **Amazon RDS Multi-AZ & Read Replica: High Availability Database Architecture with Failover Simulation**| Amazon EC2, Amazon RDS, Amazon Web Services  | Pending| https://github.com/estherdomfeh213/AmaliTech-AWS-Journey-2026/tree/main/amazon-rds-multi-az-failover
 |6 |**Connecting an EC2 Instance to an RDS MySQL Database Automatically** | Amazon EC2,Amazon RDS | Done | https://github.com/estherdomfeh213/AmaliTech-AWS-Journey-2026/tree/main/ec2-rds-connection
 |5|  **Query VPC Flow Logs Using Amazon Athena**|Amazon EC2, S3,VPC, Amazon Web Services,Amazon Athena | Done | https://github.com/estherdomfeh213/AmaliTech-AWS-Journey-2026/tree/main/vpc-flow-logs-athena-analysis
 |4 |**NAT Gateway - AWS VPC Challenge**  |Amazon EC2,VPC,Amazon Web Services  | Done | https://github.com/estherdomfeh213/AmaliTech-AWS-Journey-2026/tree/main/aws-nat-gateway |
