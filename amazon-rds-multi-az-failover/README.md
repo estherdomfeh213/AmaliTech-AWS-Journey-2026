@@ -216,4 +216,47 @@ SELECT * FROM students WHERE teacher = 'Robert Johnson';
 - Repeat for writer instance
 
 
+### 🔄 Comparison: Aurora Multi-AZ vs Alternatives
+| Feature | Aurora Multi-AZ | Standard RDS Multi-AZ| Self-Managed |
+|------|----------|------|--------|---------|
+| Failover Time | 30-60 seconds| 1-2 minutes  | Minutes to hours 
+|Data Loss Risk  |None | None | Varies  
+| Read Scaling |   Yes    | No  | Manual setup
+| Management | Fully managed  | Fully managed  |  You manage 
+|Cost  | Higher | Lower  | Your infrastructure
 
+
+
+
+
+
+
+### Project Structure 
+```text 
+amazon-rds-multi-az-failover/
+│
+├── README.md
+│
+├── diagrams/
+│   ├── architecture-diagram.png
+│ 
+│
+├── documentation/
+│   ├── deployment-guide.md
+│   ├── failover-testing-results.md
+│   └── troubleshooting-notes.md
+│
+├── scripts/
+│   ├── setup-ec2-userdata.sh
+│   ├── database-operations.sql
+│   └── verify-failover.sh
+│
+└── screenshots/
+    ├── 01-ec2-launch.png
+    ├── 02-rds-creation.png
+    ├── 03-database-connected.png
+    ├── 04-data-inserted.png
+    ├── 05-failover-initiated.png
+    ├── 06-failover-complete.png
+    └── 07-post-failover-data.png
+```
