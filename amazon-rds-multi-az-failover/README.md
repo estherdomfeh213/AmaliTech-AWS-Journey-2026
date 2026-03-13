@@ -76,3 +76,37 @@ wget https://dev.mysql.com/get/mysql80-community-release-el9-5.noarch.rpm
 sudo dnf install mysql80-community-release-el9-5.noarch.rpm -y
 sudo dnf repolist enabled | grep "mysql.*-community.*"
 sudo dnf install mysql -y
+```
+
+### Phase 2: RDS Security Group
+**Create rds-maz-SG:**
+| Type | Protocol | Port | Source | Purpose |
+|------|----------|------|--------|---------|
+| MySQL/Aurora | TCP | 3306 | 0.0.0.0/0 | Initial wide open (will restrict later)
+|
+
+
+### Phase 3: Amazon Aurora Cluster Deployment
+```yaml
+Creation Method: Standard Create
+Engine: Amazon Aurora (MySQL Compatible)
+
+Cluster Settings:
+  DB Cluster Identifier: MyAuroraCluster
+  Master Username: WhizlabsAdmin
+  Master Password: Whizlabs123
+
+Instance Configuration:
+  DB Instance Class: db.t3.medium
+  Multi-AZ Deployment: ✓ Enabled
+
+Connectivity:
+  VPC: Default VPC
+  Publicly Accessible: Yes
+  Security Groups: rds-maz-SG (remove default)
+  
+Additional Configuration:
+  Initial Database Name: whizlabsrds
+  Encryption: Disabled (Lab - enable in production)
+```
+
