@@ -119,5 +119,71 @@ WRITER_ENDPOINT="myauroracluster.cluster-xxxxx.us-east-1.rds.amazonaws.com"
 READER_ENDPOINT="myauroracluster.cluster-ro-xxxxx.us-east-1.rds.amazonaws.com"
 ```
 
+### Phase 5: Secure EC2-RDS Connectivity
+**Get EC2 Private IP:*
+
+```bash 
+PRIVATE_IP="172.31.x.x"  # From EC2 console
+```
+
+**Update RDS Security Group:**
+| Type | Protocol | Port | Source | Purpose |
+|------|----------|------|--------|---------|
+| MySQL/Aurora | TCP | 3306 | [EC2 Private IP]/32 | EC2 bastion access
+
+
+### Phase 6: Database Operations via EC2 Bastion
+
+**Connect to EC2:**
+```bash 
+ssh -i MySSHKey.pem ec2-user@<EC2-PUBLIC-IP>
+sudo su -
+```
+**Connect to RDS Writer:**
+```bash 
+mysql -h myauroracluster.cluster-xxxxx.us-east-1.rds.amazonaws.com -u WhizlabsAdmin -p
+# Password: Whizlabs123
+```
+
+**Database Setup:**
+```sql 
+-- Create and use database
+CREATE DATABASE auroro_db;
+USE auroro_db;
+
+-- Create table
+CREATE TABLE students (
+    subject_id INT AUTO_INCREMENT,
+    subject_name VARCHAR(255) NOT NULL,
+    teacher VARCHAR(255),
+    start_date DATE,
+    lesson TEXT,
+    PRIMARY KEY (subject_id)
+);
+
+-- Insert data
+INSERT INTO students(subject_name, teacher) VALUES 
+    ('English', 'John Taylor'),
+    ('Science', 'Mary Smith'),
+    ('Maths', 'Ted Miller'),
+    ('Arts', 'Suzan Carpenter');
+
+-- Verify
+SELECT * FROM students;
+
+```
+
+
+### Phase 7: Multi-AZ Failover Simulation
+**Initiate Failover:**
+    - AWS Console → RDS → Databases → Select writer → Actions → Failover → Confirm
+
+
+**What happens during failover:**
+1. RDS automatically redirects connections to new writer
+2. DNS records update to point cluster endpoint to new primary
+3. Old primary reboots and becomes new replica
+4. Process typically completes in 30-60 seconds
+
 
 
