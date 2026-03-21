@@ -30,14 +30,14 @@
 
 
 ## Weekly Learning Log
-- **Week 1:** Compute (EC2,ELB,Auto Scaling,ENI,ENA,EFA,Placement Groups) 
-- **Week 2:** Compute (Elatic Beanstalk,Lambda,Load Balancers, Outposts)
-- **Week 3:** Storage (S3,ACLs & Bucket Policy,S3 Storage Classes,Cross Regional Replication) 
-- **Week 4:** Networking & Content Delivery (VPC,Route Tables,NAT Gateway,VPC Peering & Endpoints,PrivateLink,Transit Gateway)
-- **Week 5:** Networking & Content Delivery (VPN,Direct Connect, API Gateway,CloudFront, S3 Presigned URL,Route 53, Global Acelerator)
-- **Week 6:** Security, Identity and Compliance ( IAM,Encryption & Decryption,GuardDuty,Amazon Inspector)
+- **Week 1:** Compute(EC2,ELB,Auto Scaling,ENI,ENA,EFA,Placement Groups) 
+- **Week 2:** Compute(Elatic Beanstalk,Lambda,Load Balancers, Outposts)
+- **Week 3:** Storage(S3,ACLs & Bucket Policy,S3 Storage Classes,Cross Regional Replication) 
+- **Week 4:** Networking & Content Delivery(VPC,Route Tables,NAT Gateway,VPC Peering & Endpoints,PrivateLink,Transit Gateway)
+- **Week 5:** Networking & Content Delivery(VPN,Direct Connect, API Gateway,CloudFront, S3 Presigned URL,Route 53, Global Acelerator)
+- **Week 6:** Security, Identity and Compliance( IAM,Encryption & Decryption,GuardDuty,Amazon Inspector)
 - **Week 7:** Databases (RDS,DynamoDB,Aurora,ElastiCache)
-- **Week 8:**
+- **Week 8:** Management & Governance(AWS Organizations,CloudWatch,AWS Config,CloudTrail,CloudFormation,Compute Optimizer, Trusted Advisor,Health Dashboard,Systems Manager)
 - **Week 9:**
 - **Week 10:**
 - **Week 11:**
