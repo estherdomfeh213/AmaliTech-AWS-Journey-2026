@@ -24,7 +24,7 @@ The architecture is aligned with real-world use cases such as:
 
 ---
 
-## 🔄 Architecture Flow
+## Architecture Flow
 
 User uploads file to S3 bucket  
 → S3 Event Notification triggered (ObjectCreated:Put)  
@@ -33,7 +33,7 @@ User uploads file to S3 bucket
 
 ---
 
-## ⚙️ Implementation Steps
+## Implementation Steps
 
 ### 1. SNS Topic Setup
 
