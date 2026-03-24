@@ -39,7 +39,7 @@
 - **Week 6:** Security, Identity and Compliance( IAM,Encryption & Decryption,GuardDuty,Amazon Inspector)
 - **Week 7:** Databases (RDS,DynamoDB,Aurora,ElastiCache)
 - **Week 8:** Management & Governance(AWS Organizations,CloudWatch,AWS Config,CloudTrail,CloudFormation,Compute Optimizer, Trusted Advisor,Health Dashboard,Systems Manager)
-- **Week 9:**
+- **Week 9:** Application Integration (Step Functions, MQ, SQS, SNS, AppSync, EventBridge, Amplify)
 - **Week 10:**
 - **Week 11:**
 - **Week 12:**
