@@ -74,3 +74,22 @@ Updated the SNS topic policy to allow S3 to publish messages:
     }
   ]
 }
+```
+
+### 4. S3 Event Notification
+Configured S3 event notification:
+```bash
+- Event name: uploadObjectS3Event
+- Event type: ObjectCreated (Put)
+- Destination: SNS Topic (mySnsChallengeTopic)
+```
+
+### 5. Testing 
+To validate the setup:
+```bash
+1. Uploaded a sample .png file to the S3 bucket
+2. S3 triggered the event notification
+3. SNS received the event
+4. Email notification was successfully delivered
+```
+![]()
