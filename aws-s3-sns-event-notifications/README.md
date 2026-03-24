@@ -36,18 +36,18 @@ User uploads file to S3 bucket
 ## Implementation Steps
 
 ### 1. SNS Topic Setup
-
+```bash 
 - Created a Standard SNS topic: `mySnsChallengeTopic`  
 - Configured an email subscription  
 - Confirmed subscription via email  
-
+```
 ---
 
 ### 2. S3 Bucket Configuration
-
+```bash
 - Created a globally unique S3 bucket  
 - Enabled object upload functionality  
-
+```
 ---
 
 ### 3. SNS Topic Access Policy
