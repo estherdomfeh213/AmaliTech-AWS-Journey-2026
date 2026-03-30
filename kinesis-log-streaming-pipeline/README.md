@@ -142,23 +142,31 @@ sudo systemctl enable httpd
 sudo systemctl status httpd
 ```
 
-#### 2.3 Download Sample Website Template
+#### 2.3 Download and Deploy Sample Websit
 ```bash 
-# Navigate to web root directory
+# Navigate to HTML folder
 cd /var/www/html
 
 # Download sample website template
-sudo wget https://www.tooplate.com/zip-templates/2137_barista_cafe.zip
+curl -O -L -A "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36" "https://labresources.whizlabs.com/094ba567ebb44c80c99f06f70ba6b44a/marvel-master.zip"
 
-# Extract the template
-sudo unzip 2137_barista_cafe.zip
+# Verify download
+ls
+# Expected output: marvel-master.zip
 
-# Move files to root directory
-sudo mv 2137_barista_cafe/* .
+# Unzip the template
+sudo unzip marvel-master.zip
 
-# Clean up
-sudo rm -rf 2137_barista_cafe 2137_barista_cafe.zip
+# List contents
+ls
+# Expected output: marvel-master  marvel-master.zip
 
-# Set proper permissions
-sudo chown -R apache:apache /var/www/html
 ```
+
+#### 4.3 Verify Website
+Open a browser and navigate to:
+```text
+http://<your-instance-public-ip>/marvel-master/
+```
+You should see the sample website.
+![sample-website](screenshots/sample-website.png)
