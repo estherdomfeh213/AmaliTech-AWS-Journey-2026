@@ -41,7 +41,7 @@
 - **Week 7:** Databases (RDS,DynamoDB,Aurora,ElastiCache)
 - **Week 8:** Management & Governance(AWS Organizations,CloudWatch,AWS Config,CloudTrail,CloudFormation,Compute Optimizer, Trusted Advisor,Health Dashboard,Systems Manager)
 - **Week 9:** Application Integration (Step Functions, MQ, SQS, SNS, AppSync, EventBridge, Amplify)
-- **Week 10:**
+- **Week 10:** AWS Snow Family,Database Migration,DataSync, Redshift,EMR, Kinesis,Polly,Translate,Comprehend,Rekognition,Lex
 - **Week 11:**
 - **Week 12:**
 - **Week 13:**
