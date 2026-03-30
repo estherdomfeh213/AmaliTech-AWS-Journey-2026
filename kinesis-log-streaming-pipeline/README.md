@@ -60,3 +60,6 @@ I designed and implemented an end-to-end data streaming pipeline that captures A
 - ✅ Implemented encryption at rest and in transit
 
 ---
+
+## Architecture Diagram 
+![architecture-diagram](doc/architecture-diagram.png)
