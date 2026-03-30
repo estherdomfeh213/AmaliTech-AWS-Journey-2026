@@ -63,3 +63,102 @@ I designed and implemented an end-to-end data streaming pipeline that captures A
 
 ## Architecture Diagram 
 ![architecture-diagram](doc/architecture-diagram.png)
+
+
+
+---
+
+## Technologies Used
+
+| Service | Purpose |
+|---------|---------|
+| **Amazon EC2** | Hosts the sample website and Apache web server |
+| **Apache HTTP Server** | Web server generating access logs |
+| **Amazon Kinesis Data Streams** | Real-time log ingestion with encryption |
+| **Amazon Kinesis Agent** | Tails log files and publishes to Kinesis |
+| **Amazon Kinesis Data Firehose** | Delivers streaming data to S3 |
+| **Amazon S3** | Durable, scalable log storage with encryption |
+| **AWS IAM** | Instance profile for EC2 permissions |
+| **Amazon CloudWatch** | Monitoring metrics for Kinesis and Firehose |
+
+
+---
+
+## Implementation Steps
+
+### 1. EC2 Instance Setup
+
+**Objective:** Launch an EC2 instance that will host the sample website.
+
+| Parameter | Value |
+|-----------|-------|
+| **Instance Name** | Demo_Instance |
+| **AMI** | Amazon Linux 2023 AMI |
+| **Instance Type** | t2.micro |
+| **Key Pair** | Created for SSH access |
+| **Security Group** | SSH (port 22) + HTTP (port 80) |
+| **IAM Instance Profile** | EC2_Role_<RANDOM_NUMBER> |
+
+**Steps:**
+
+1. Navigate to EC2 Dashboard → Instances → Launch Instance
+2. Enter name: `Demo_Instance`
+3. Select Amazon Linux 2023 AMI
+4. Choose t2.micro (free tier eligible)
+5. Create or select an existing key pair
+6. Configure security group with:
+   - SSH (22) from anywhere
+   - HTTP (80) from anywhere
+7. Under Advanced details, select IAM instance profile: `EC2_Role_<RANDOM_NUMBER>`
+8. Launch instance
+
+---
+
+### 2. Host Sample Website
+
+**Objective:** Install Apache web server and deploy a sample website.
+
+#### 2.1 SSH into EC2 Instance
+
+```bash
+ssh -i your-key.pem ec2-user@<public-ip-address>
+```
+
+#### 2.2 Install Apache Web Server
+```bash
+# Update system packages
+sudo dnf update -y
+
+# Install Apache web server
+sudo dnf install -y httpd
+
+# Start Apache service
+sudo systemctl start httpd
+
+# Enable Apache to start on boot
+sudo systemctl enable httpd
+
+# Verify Apache is running
+sudo systemctl status httpd
+```
+
+#### 2.3 Download Sample Website Template
+```bash 
+# Navigate to web root directory
+cd /var/www/html
+
+# Download sample website template
+sudo wget https://www.tooplate.com/zip-templates/2137_barista_cafe.zip
+
+# Extract the template
+sudo unzip 2137_barista_cafe.zip
+
+# Move files to root directory
+sudo mv 2137_barista_cafe/* .
+
+# Clean up
+sudo rm -rf 2137_barista_cafe 2137_barista_cafe.zip
+
+# Set proper permissions
+sudo chown -R apache:apache /var/www/html
+```
