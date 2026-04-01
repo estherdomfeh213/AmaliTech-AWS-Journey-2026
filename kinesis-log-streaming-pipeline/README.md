@@ -226,7 +226,7 @@ sudo find /var/log/httpd -type d -exec sudo chmod 2775 {} \;
 6. Click the **Configuration** tab → Scroll to **Encryption** → Click **Edit**.
 7. Check **Enable server-side** encryption → Encryption key type: Use **AWS managed CMK** → Click **Save changes.**
 
---
+---
 ### Create S3 Bucket
 |Parameter| Value|
 |---------|------|
