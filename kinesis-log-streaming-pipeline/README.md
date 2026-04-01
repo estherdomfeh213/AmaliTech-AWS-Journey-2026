@@ -243,3 +243,16 @@ sudo find /var/log/httpd -type d -exec sudo chmod 2775 {} \;
   - Encryption key type: **Amazon S3 key (SSE-S3)**
   - Bucket key: **Enable**
 6. Click **Create bucket.**
+
+
+---
+
+### Create Kinesis Data Firehose
+|Parameter|	Value|
+|---------|------|
+|Delivery Stream Name|	whiz-data-stream|
+|Source|	Amazon Kinesis Data Streams|
+|Source Stream|	whiz-data-stream|
+|Destination|	Amazon S3|
+|S3 Bucket|	whiz-demo-logs|
+|Buffer Interval|	60 seconds
