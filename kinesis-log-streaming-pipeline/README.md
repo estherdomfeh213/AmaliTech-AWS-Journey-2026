@@ -209,3 +209,10 @@ sudo chmod 2775 /var/log/httpd
 sudo find /var/log/httpd -type d -exec sudo chmod 2775 {} \;
 ```
 
+### Create Kinesis Data Stream
+
+|Parameter| Value |
+|---------|---------|
+| Stream Name |whiz-data-stream          |
+|Capacity Mode      | On-demand (default)         |
+|Encryption       |Enabled with AWS managed CMK        |
