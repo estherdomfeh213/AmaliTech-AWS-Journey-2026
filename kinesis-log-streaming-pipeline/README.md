@@ -216,3 +216,21 @@ sudo find /var/log/httpd -type d -exec sudo chmod 2775 {} \;
 | Stream Name |whiz-data-stream          |
 |Capacity Mode      | On-demand (default)         |
 |Encryption       |Enabled with AWS managed CMK        |
+
+#### Step-by-Step Instructions
+1. Navigate to **Kinesis → Services → Analytics → Kinesis.**
+2. Under **Get Started**, select **Kinesis Data Streams → Create data stream.**
+3. **Data stream name:** Enter whiz-data-stream
+4. Leave all other settings as default → Click **Create data stream.**
+5. Wait for the stream status to become **Active.**
+6. Click the **Configuration** tab → Scroll to **Encryption** → Click **Edit**.
+7. Check **Enable server-side** encryption → Encryption key type: Use **AWS managed CMK** → Click **Save changes.**
+
+
+
+### Create S3 Bucket
+|Parameter| Value|
+|---------|------|
+|Bucket Name| whiz-demo-logs (add suffix if taken)     |
+|Region | US East (N. Virginia) us-east-1 |
+| Encryption |SSE-S3 enabled |
