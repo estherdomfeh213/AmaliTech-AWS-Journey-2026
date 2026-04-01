@@ -255,4 +255,18 @@ sudo find /var/log/httpd -type d -exec sudo chmod 2775 {} \;
 |Source Stream|	whiz-data-stream|
 |Destination|	Amazon S3|
 |S3 Bucket|	whiz-demo-logs|
-|Buffer Interval|	60 seconds
+|Buffer Interval|	60 seconds|
+
+#### Step-by-Step Instructions
+1. Navigate to Kinesis → Services → Analytics → Kinesis.
+2. Under Get Started, select Amazon Data Firehose → Create Firehose stream.
+3. Source: Select Amazon Kinesis Data Streams
+4. Destination: Select Amazon S3
+5. Firehose stream name: Enter whiz-data-stream
+6. Source settings: Click Browse → Select whiz-data-stream → Click Choose
+7. Transform and convert records: Leave as default
+8. Destination settings: Click Browse → Select whiz-demo-logs → Click Choose
+9. Buffer hints, compression and encryption: Expand → Buffer interval: Set to 60 seconds
+10. Advanced settings:
+  - Service access: Choose Existing IAM role → Select the role from dropdown
+11. Click Create Firehose stream.
