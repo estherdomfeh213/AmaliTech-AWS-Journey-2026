@@ -233,3 +233,13 @@ sudo find /var/log/httpd -type d -exec sudo chmod 2775 {} \;
 |Bucket Name| whiz-demo-logs (add suffix if taken)     |
 |Region | US East (N. Virginia) us-east-1 |
 | Encryption |SSE-S3 enabled |
+
+#### Step-by-Step Instructions
+1. Navigate to **S3 → Services → Storage → S3.**
+2. Click **Create bucket.**
+3. **Bucket name:** Enter whiz-demo-logs (Note: S3 bucket names are globally unique - add a unique suffix if this name is taken)
+4. **Region:** Select **US East (N. Virginia) us-east-1**
+5. **Default encryption:**
+  - Encryption key type: **Amazon S3 key (SSE-S3)**
+  - Bucket key: **Enable**
+6. Click **Create bucket.**
