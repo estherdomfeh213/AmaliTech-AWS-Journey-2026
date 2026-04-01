@@ -170,3 +170,42 @@ http://<your-instance-public-ip>/marvel-master/
 ```
 You should see the sample website.
 ![sample-website](screenshots/sample-website.png)
+
+--
+
+#### 4.4 Check Access Logs
+```bash 
+cd /var/log/httpd/
+tail -10 access_log
+```
+
+
+### Set File Permissions for HTTPD
+Configure permission so the Kinesis Agent can read the log files.
+
+```bash 
+# Add httpd group
+groupadd httpd
+
+# Add ec2-user to httpd group
+usermod -a -G httpd ec2-user
+
+# Log out completely to refresh permissions (exit twice if in sudo)
+exit
+exit
+
+# SSH back into EC2 instance
+ssh -i WhizKey.pem ec2-user@<your-instance-public-ip>
+
+# Verify httpd group exists
+groups
+# Expected output includes: httpd
+
+# Change group ownership of httpd directory
+sudo chown -R root:httpd /var/log/httpd
+
+# Set directory permissions
+sudo chmod 2775 /var/log/httpd
+sudo find /var/log/httpd -type d -exec sudo chmod 2775 {} \;
+```
+
